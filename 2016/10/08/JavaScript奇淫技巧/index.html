@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端, 技术, 博客" />
+  <meta name="keywords" content="JavaScript," />
 
 
 
@@ -84,12 +84,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="这样生活 很美...">
-<meta property="og:url" content="https://zmGitHub.github.io/index.html">
+<meta name="description" content="1.数字处理1234567891011121314151617181920// 向下取整let num1 = ~~1.2; // 1let num2 = 3.6&amp;gt;&amp;gt;0; // 3let num3 = 10.67345|0; // 10let num4 = 13.66454^0; // 13// 字符串转数字let str = +&apos;1231&apos;; //1231 但是1231dsf 这样的不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript奇淫技巧">
+<meta property="og:url" content="https://zmGitHub.github.io/2016/10/08/JavaScript奇淫技巧/index.html">
 <meta property="og:site_name" content="这样生活 很美...">
+<meta property="og:description" content="1.数字处理1234567891011121314151617181920// 向下取整let num1 = ~~1.2; // 1let num2 = 3.6&amp;gt;&amp;gt;0; // 3let num3 = 10.67345|0; // 10let num4 = 13.66454^0; // 13// 字符串转数字let str = +&apos;1231&apos;; //1231 但是1231dsf 这样的不">
+<meta property="og:updated_time" content="2016-10-08T03:26:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="这样生活 很美...">
+<meta name="twitter:title" content="JavaScript奇淫技巧">
+<meta name="twitter:description" content="1.数字处理1234567891011121314151617181920// 向下取整let num1 = ~~1.2; // 1let num2 = 3.6&amp;gt;&amp;gt;0; // 3let num3 = 10.67345|0; // 10let num4 = 13.66454^0; // 13// 字符串转数字let str = +&apos;1231&apos;; //1231 但是1231dsf 这样的不">
 
 
 
@@ -110,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="https://zmGitHub.github.io/"/>
+  <link rel="canonical" href="https://zmGitHub.github.io/2016/10/08/JavaScript奇淫技巧/"/>
 
-  <title> 这样生活 很美... </title>
+  <title> JavaScript奇淫技巧 | 这样生活 很美... </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,9 +147,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -232,9 +234,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -254,10 +256,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/10/08/JavaScript奇淫技巧/" itemprop="url">
-                  JavaScript奇淫技巧
-                </a>
+                JavaScript奇淫技巧
               
             
           </h1>
@@ -332,9 +331,7 @@
       
 
       
-        
-          
-            <h2 id="1-数字处理"><a href="#1-数字处理" class="headerlink" title="1.数字处理"></a>1.数字处理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 向下取整</span></div><div class="line"><span class="keyword">let</span> num1 = ~~<span class="number">1.2</span>; <span class="comment">// 1</span></div><div class="line"><span class="keyword">let</span> num2 = <span class="number">3.6</span>&gt;&gt;<span class="number">0</span>; <span class="comment">// 3</span></div><div class="line"><span class="keyword">let</span> num3 = <span class="number">10.67345</span>|<span class="number">0</span>; <span class="comment">// 10</span></div><div class="line"><span class="keyword">let</span> num4 = <span class="number">13.66454</span>^<span class="number">0</span>; <span class="comment">// 13</span></div><div class="line"></div><div class="line"><span class="comment">// 字符串转数字</span></div><div class="line"><span class="keyword">let</span> str = +<span class="string">'1231'</span>; <span class="comment">//1231 但是1231dsf 这样的不行 会是 NaN</span></div><div class="line"></div><div class="line"><span class="comment">// 验证是否是数字:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNumber</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> !<span class="built_in">isNaN</span>(<span class="built_in">parseFloat</span>(n)) &amp;&amp; <span class="built_in">isFinite</span>(n);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 浮点计算的问题</span></div><div class="line"><span class="number">0.1</span> + <span class="number">0.2</span> === <span class="number">0.3</span> <span class="comment">// is false</span></div><div class="line"><span class="number">9007199254740992</span> + <span class="number">1</span> <span class="comment">// is equal to 9007199254740992</span></div><div class="line"><span class="number">9007199254740992</span> + <span class="number">2</span> <span class="comment">// is equal to 9007199254740994</span></div><div class="line"><span class="comment">/* 因为0.1+0.2等于0.30000000000000004。JavaScript的数字都遵循IEEE 754标准构建，在内部都是64位浮点小数表示</span></div><div class="line">可以通过使用toFixed()和toPrecision()来解决这个问题。*/</div></pre></td></tr></table></figure>
+        <h2 id="1-数字处理"><a href="#1-数字处理" class="headerlink" title="1.数字处理"></a>1.数字处理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 向下取整</span></div><div class="line"><span class="keyword">let</span> num1 = ~~<span class="number">1.2</span>; <span class="comment">// 1</span></div><div class="line"><span class="keyword">let</span> num2 = <span class="number">3.6</span>&gt;&gt;<span class="number">0</span>; <span class="comment">// 3</span></div><div class="line"><span class="keyword">let</span> num3 = <span class="number">10.67345</span>|<span class="number">0</span>; <span class="comment">// 10</span></div><div class="line"><span class="keyword">let</span> num4 = <span class="number">13.66454</span>^<span class="number">0</span>; <span class="comment">// 13</span></div><div class="line"></div><div class="line"><span class="comment">// 字符串转数字</span></div><div class="line"><span class="keyword">let</span> str = +<span class="string">'1231'</span>; <span class="comment">//1231 但是1231dsf 这样的不行 会是 NaN</span></div><div class="line"></div><div class="line"><span class="comment">// 验证是否是数字:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNumber</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> !<span class="built_in">isNaN</span>(<span class="built_in">parseFloat</span>(n)) &amp;&amp; <span class="built_in">isFinite</span>(n);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 浮点计算的问题</span></div><div class="line"><span class="number">0.1</span> + <span class="number">0.2</span> === <span class="number">0.3</span> <span class="comment">// is false</span></div><div class="line"><span class="number">9007199254740992</span> + <span class="number">1</span> <span class="comment">// is equal to 9007199254740992</span></div><div class="line"><span class="number">9007199254740992</span> + <span class="number">2</span> <span class="comment">// is equal to 9007199254740994</span></div><div class="line"><span class="comment">/* 因为0.1+0.2等于0.30000000000000004。JavaScript的数字都遵循IEEE 754标准构建，在内部都是64位浮点小数表示</span></div><div class="line">可以通过使用toFixed()和toPrecision()来解决这个问题。*/</div></pre></td></tr></table></figure>
 <h2 id="2-日期转数字"><a href="#2-日期转数字" class="headerlink" title="2.日期转数字"></a>2.日期转数字</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> num = + <span class="keyword">new</span> <span class="built_in">Date</span>();</div></pre></td></tr></table></figure>
 <h2 id="3-随机码"><a href="#3-随机码" class="headerlink" title="3.随机码"></a>3.随机码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.random().toString(<span class="number">16</span>).substring(<span class="number">2</span>) <span class="comment">// 14 位</span></div><div class="line"><span class="built_in">Math</span>.random().toString(<span class="number">36</span>).substring(<span class="number">2</span>); <span class="comment">// 11 位</span></div><div class="line"></div><div class="line"><span class="comment">// 获取数组的随机元素</span></div><div class="line"><span class="keyword">let</span> items = [<span class="number">12</span>, <span class="number">548</span> , <span class="string">'a'</span> , <span class="number">2</span> , <span class="number">5478</span> , <span class="string">'foo'</span> , <span class="number">8852</span>, , <span class="string">'Doe'</span> , <span class="number">2145</span> , <span class="number">119</span>];</div><div class="line">items[<span class="built_in">Math</span>.random()*items.length|<span class="number">0</span>] <span class="comment">// items[Math.floor(Math.random() * items.length)]</span></div><div class="line"></div><div class="line"><span class="comment">// 获取指定范围内的随机数</span></div><div class="line">(<span class="built_in">Math</span>.random()*(max-min+<span class="number">1</span>))|<span class="number">0</span> + min; <span class="comment">// Math.floor(Math.random() * (max - min + 1)) + min;</span></div></pre></td></tr></table></figure>
 <h2 id="4-条件判断"><a href="#4-条件判断" class="headerlink" title="4.条件判断"></a>4.条件判断</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = b &amp;&amp; <span class="number">1</span>;</div><div class="line"><span class="comment">//相当于:</span></div><div class="line"><span class="keyword">if</span> (b) &#123;</div><div class="line">  a = <span class="number">1</span>;</div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">  a = b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> a = b || <span class="number">1</span>;</div><div class="line"><span class="comment">//相当于</span></div><div class="line"><span class="keyword">if</span> (b) &#123;</div><div class="line">  a = b;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  a = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">underfined、<span class="literal">null</span>、<span class="number">0</span>、<span class="literal">false</span>、<span class="literal">NaN</span>、空字符串的逻辑结果均为<span class="literal">false</span></div></pre></td></tr></table></figure>
@@ -342,190 +339,59 @@
 <h2 id="数组处理"><a href="#数组处理" class="headerlink" title="数组处理"></a>数组处理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> arr = [<span class="number">12</span> , <span class="number">222</span> , <span class="number">1000</span> ];</div><div class="line"></div><div class="line">验证是否是数组:</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Array]'</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">求数组的最大值和最小值</div><div class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>]) <span class="comment">// 8  IE8 会出错 (Math.min.apply(null, [1,3,5,8]))</span></div><div class="line">或者</div><div class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>,<span class="number">5</span>,<span class="number">79</span>,<span class="number">4</span>];</div><div class="line"><span class="built_in">Math</span>.max(...arr); <span class="comment">// 79 Math.min(...arr);</span></div><div class="line"></div><div class="line">清空数组</div><div class="line">arr.length = <span class="number">0</span>;</div></pre></td></tr></table></figure>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.jstips.co/" target="_blank" rel="external">JSTips</a></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/08/16/hexo-setup/" itemprop="url">
-                  使用 hexo 和 GitHubPage 搭建个人博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-16T14:24:14+08:00" content="2016-08-16">
-              2016-08-16
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/技术研究/" itemprop="url" rel="index">
-                    <span itemprop="name">技术研究</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/08/16/hexo-setup/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/16/hexo-setup/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/08/16/hexo-setup/" class="leancloud_visitors" data-flag-title="使用 hexo 和 GitHubPage 搭建个人博客">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
+            <a href="/tags/JavaScript/" rel="tag">#JavaScript</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a> 是一个快速、简洁且高效的博客框架。之前我还用过 ghost 之类的博客构建系统, 感觉还是这款用起来比较顺手, 而且高度可配置;刚开始也会在 <a href="http://www.csdn.net/" target="_blank" rel="external">CSDN</a>, <a href="http://segmentfault.com/" target="_blank" rel="external">segmentfault</a>, <a href="http://www.jianshu.com/" target="_blank" rel="external">简书</a> 写博客,<br>但是一直想有一个自己的博客,奈何不想去折腾买服务器和域名(其实木有钱), 所以就借助 hexo 和 gitHub 搭建自己的个人博客.</p>
-<h2 id="1-前-提"><a href="#1-前-提" class="headerlink" title="1. 前 提"></a>1. 前 提</h2><p>安装 Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div><div class="line">hexo init blog</div><div class="line">cd blog</div><div class="line">npm install</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
-<p>这里自己看官方文档就好…</p>
-<h2 id="2-gitHub-创建项目"><a href="#2-gitHub-创建项目" class="headerlink" title="2. gitHub 创建项目"></a>2. gitHub 创建项目</h2><p>这里就要啰嗦下, GitHubPage是你项目的演示网址, 但是只能是静态的 html 页面不过刚刚好满足我们搭建自己的博客</p>
-<ul>
-<li>首先登录你的 <a href="https://github.com" target="_blank" rel="external">gitHub</a></li>
-<li>然后创建一个项目<br><img src="https://pages.github.com/images/user-repo@2x.png" alt="项目创建"></li>
-</ul>
-<blockquote>
-<p>这里注意了 仔细看清楚了: repository name 这个输入框, 这个xxx.github.io 就是你以后博客的地址,<br>  xxx 是你的 github 用户名也就是你的登录名 不要搞错了 要不就访问不了</p>
-<ul>
-<li>项目创建了好了 不用管它 来看下一步</li>
-</ul>
-</blockquote>
-<h2 id="3-本地配置和预览"><a href="#3-本地配置和预览" class="headerlink" title="3. 本地配置和预览"></a>3. 本地配置和预览</h2><p>在本地用 hexo init 了以后就可以开始写博客了, 但是在写之前我们还需要配置下自己的博客, 下面是我的配置项(只列出我配置的其他的都是默认):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">title: 这样生活 很美... ## 这是你博客的名称</div><div class="line">subtitle:             ## 副标题</div><div class="line">description:          ## 博客的描述</div><div class="line">author: 钟 明          ## 博主</div><div class="line">language: zh-Hans     ## 国际化 这里是中文</div><div class="line">timezone:             ## 时间戳 可以不用管</div><div class="line"></div><div class="line">url: https://zmGitHub.github.io ## 这就是你在 github 上创建的项目名</div><div class="line">root: /  ## 资源访问起点</div><div class="line">permalink: :year/:month/:day/:title/</div><div class="line">permalink_defaults:</div><div class="line"></div><div class="line">.....</div><div class="line">.....</div><div class="line">## https://hexo.io/themes/</div><div class="line">theme: next ## 这里我用了 next 主题 看自己喜欢了</div><div class="line"></div><div class="line"># 部署配置</div><div class="line">## 文档: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/zmGitHub/zmGitHub.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>这里还是要啰嗦下, 我们在 github 上是可以去配置项目的GitHub Pages<br>有一个Automatic page generator 的功能这是项目的说明主页, 不要把自己的博客放到这个分支上</p>
-</blockquote>
-<h2 id="主题配置和插件使用"><a href="#主题配置和插件使用" class="headerlink" title="主题配置和插件使用"></a>主题配置和插件使用</h2><p>我这里是使用了 <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">Next</a> 主题, 光 star 就有9000千多,<br>看自己喜好,主题很多, 他的配置文档写的非常详细我就不多说<br>然后我使用了这些插件: </p>
-<ul>
-<li>多说</li>
-<li>百度分析</li>
-<li>Google 分析</li>
-<li>文章阅读数量统计</li>
-</ul>
-<p>基本就是这样了关于 hexo 搭建的文章太多了, 另外 <a href="http://daringfireball.net/projects/markdown/basics" target="_blank" rel="external">markdown</a> 的语法</p>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/16/hexo-setup/" rel="next" title="使用 hexo 和 GitHubPage 搭建个人博客">
+                <i class="fa fa-chevron-left"></i> 使用 hexo 和 GitHubPage 搭建个人博客
+              </a>
+            
+          </div>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -533,6 +399,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/08/JavaScript奇淫技巧/"
+           data-title="JavaScript奇淫技巧" data-url="https://zmGitHub.github.io/2016/10/08/JavaScript奇淫技巧/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -552,8 +426,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -603,6 +486,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数字处理"><span class="nav-number">1.</span> <span class="nav-text">1.数字处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-日期转数字"><span class="nav-number">2.</span> <span class="nav-text">2.日期转数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-随机码"><span class="nav-number">3.</span> <span class="nav-text">3.随机码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-条件判断"><span class="nav-number">4.</span> <span class="nav-text">4.条件判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-判断-IE"><span class="nav-number">5.</span> <span class="nav-text">5.判断 IE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组处理"><span class="nav-number">6.</span> <span class="nav-text">数组处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -706,6 +600,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
