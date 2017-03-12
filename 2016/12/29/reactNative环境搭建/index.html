@@ -1,0 +1,895 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://fonts.proxy.ustclug.org/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react,reactNative," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Android 环境搭建:下载 Android studio:android studio下载完成后选择 custom:设置代理:1proxy: android-mirror.bugly.qq.com 8080
+默认的 sdk 位置:1/Users/turbo/Library/Android/sdk
+如果安装失败: 提示 :1SDK tools directory is missing
+解决方案">
+<meta property="og:type" content="article">
+<meta property="og:title" content="reactNative Android 环境搭建">
+<meta property="og:url" content="https://zmGitHub.github.io/2016/12/29/reactNative环境搭建/index.html">
+<meta property="og:site_name" content="这样生活 很美...">
+<meta property="og:description" content="Android 环境搭建:下载 Android studio:android studio下载完成后选择 custom:设置代理:1proxy: android-mirror.bugly.qq.com 8080
+默认的 sdk 位置:1/Users/turbo/Library/Android/sdk
+如果安装失败: 提示 :1SDK tools directory is missing
+解决方案">
+<meta property="og:image" content="https://zmGitHub.github.io/2016/12/29/reactNative环境搭建/5A46CEAD-8D64-46A9-84C0-385916B44E4C.png">
+<meta property="og:image" content="https://zmGitHub.github.io/2016/12/29/reactNative环境搭建/D22059F1-3806-44A8-B09A-F62A19A06BFE.png">
+<meta property="og:image" content="https://zmGitHub.github.io/2016/12/29/reactNative环境搭建/FA1ED908-7EED-4134-9D01-B28F2F52C196.png">
+<meta property="og:image" content="https://zmGitHub.github.io/2016/12/29/reactNative环境搭建/48E8706F-7826-4177-A4C6-546AD2164DD8.png">
+<meta property="og:updated_time" content="2016-12-29T13:48:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="reactNative Android 环境搭建">
+<meta name="twitter:description" content="Android 环境搭建:下载 Android studio:android studio下载完成后选择 custom:设置代理:1proxy: android-mirror.bugly.qq.com 8080
+默认的 sdk 位置:1/Users/turbo/Library/Android/sdk
+如果安装失败: 提示 :1SDK tools directory is missing
+解决方案">
+<meta name="twitter:image" content="https://zmGitHub.github.io/2016/12/29/reactNative环境搭建/5A46CEAD-8D64-46A9-84C0-385916B44E4C.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '10433083',
+      author: '主编大人'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zmGitHub.github.io/2016/12/29/reactNative环境搭建/"/>
+
+
+
+
+
+  <title> reactNative Android 环境搭建 | 这样生活 很美... </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?50e28ddb289955cc76190aef55d80365";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">这样生活 很美...</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/12/29/reactNative环境搭建/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="钟 明">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="这样生活 很美...">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                reactNative Android 环境搭建
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-29T17:01:44+08:00">
+                2016-12-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术研究/" itemprop="url" rel="index">
+                    <span itemprop="name">技术研究</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/12/29/reactNative环境搭建/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/29/reactNative环境搭建/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/29/reactNative环境搭建/" class="leancloud_visitors" data-flag-title="reactNative Android 环境搭建">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <hr>
+<h2 id="Android-环境搭建"><a href="#Android-环境搭建" class="headerlink" title="Android 环境搭建:"></a>Android 环境搭建:</h2><p>下载 Android studio:<br><a href="https://developer.android.com/studio/index.html#tos-header" target="_blank" rel="external">android studio</a><br>下载完成后选择 custom:<br>设置代理:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">proxy: android-mirror.bugly.qq.com 8080</div></pre></td></tr></table></figure></p>
+<p>默认的 sdk 位置:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Users/turbo/Library/Android/sdk</div></pre></td></tr></table></figure></p>
+<p>如果安装失败: 提示 :<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SDK tools directory is missing</div></pre></td></tr></table></figure></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案:"></a>解决方案:</h3><p>卸载重新安装(直接卸载, 如果卸载后配置文件还是在就使用下列命令)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">rm -Rf /Applications/Android\ Studio.app</div><div class="line"></div><div class="line">rm -Rf ~/Library/Preferences/AndroidStudio*</div><div class="line"></div><div class="line">rm ~/Library/Preferences/com.google.android.studio.plist</div><div class="line"></div><div class="line">rm -Rf ~/Library/Application\ Support/AndroidStudio*</div><div class="line"></div><div class="line">rm -Rf ~/Library/Logs/AndroidStudio*</div><div class="line"></div><div class="line">rm -Rf ~/Library/Caches/AndroidStudio*</div><div class="line"></div><div class="line">rm -Rf ~/AndroidStudioProjects</div><div class="line"></div><div class="line">rm -Rf ~/.gradle</div><div class="line"></div><div class="line">rm -Rf ~/.android</div><div class="line"></div><div class="line">rm -Rf ~/Library/Android*</div></pre></td></tr></table></figure></p>
+<p>如果重新安装还是不行, 直接下载 sdk<br><a href="https://developer.android.com/studio/index.html#tos-header" target="_blank" rel="external">SDK</a> 选择仅获取命令行工具</p>
+<h2 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置:"></a>环境变量配置:</h2><p>配置用户目录下的: ~/.bash_profile 不是 ~/.bashrc, 然后在行尾加入如下代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># Android sdk</div><div class="line">export ANDROID_HOME=~/Library/Android/sdk</div><div class="line">export PATH=$&#123;PATH&#125;:$&#123;ANDROID_HOME&#125;/tools</div><div class="line">export PATH=$&#123;PATH&#125;:$&#123;ANDROID_HOME&#125;/platform-tools</div></pre></td></tr></table></figure></p>
+<h3 id="配置完成后更新配置"><a href="#配置完成后更新配置" class="headerlink" title="配置完成后更新配置:"></a>配置完成后更新配置:</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 在用户目录下操作</span></div><div class="line"><span class="built_in">cd</span> ~</div><div class="line">&gt; <span class="built_in">source</span> .bash_profile</div><div class="line">&gt; android <span class="comment"># 执行后会弹出 sdk manager</span></div></pre></td></tr></table></figure>
+<h3 id="选择对应的-Android-API-和构建工具"><a href="#选择对应的-Android-API-和构建工具" class="headerlink" title="选择对应的 Android API 和构建工具:"></a>选择对应的 Android API 和构建工具:</h3><img src="/2016/12/29/reactNative环境搭建/5A46CEAD-8D64-46A9-84C0-385916B44E4C.png" alt="5A46CEAD-8D64-46A9-84C0-385916B44E4C.png" title="">
+<img src="/2016/12/29/reactNative环境搭建/D22059F1-3806-44A8-B09A-F62A19A06BFE.png" alt="D22059F1-3806-44A8-B09A-F62A19A06BFE.png" title="">
+<p>这里可能会出现有的包显示不了, 所以你需要配置下<a href="[Android development tools mirror.](http://android-mirror.bugly.qq.com:8080/include/usage.html">Android repository</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">http://android-mirror.bugly.qq.com:8080/android/repository/addon.xml</div></pre></td></tr></table></figure></p>
+<p>位置是: Android SDK Manager &gt; Tools &gt; Add-on Sites &gt; User Defined Sites<br><img src="/2016/12/29/reactNative环境搭建/FA1ED908-7EED-4134-9D01-B28F2F52C196.png" alt="FA1ED908-7EED-4134-9D01-B28F2F52C196.png" title=""><br>然后再重新选择: Packages &gt; reload 会发现没有的包出来了</p>
+<p>选择后开始安装就好了</p>
+<h2 id="安装-gradle"><a href="#安装-gradle" class="headerlink" title="安装 gradle"></a>安装 gradle</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; brew install gradle</div><div class="line"><span class="comment"># 开启Gradle Daemon可以极大地提升java代码的增量编译速度。</span></div><div class="line"></div><div class="line">&gt; touch ~/.gradle/gradle.properties &amp;&amp; <span class="built_in">echo</span> <span class="string">"org.gradle.daemon=true"</span> &gt;&gt; ~/.gradle/</div><div class="line">gradle.properties</div><div class="line"></div><div class="line"><span class="comment"># gradle 安装完成后会在用户目录生成.gradle 文件夹</span></div></pre></td></tr></table></figure>
+<p>但是还有个问题, react-native run-android 的时候回特别的慢, 我开着 vpn 可能是 vpn 不好的原因下载不了, 所以我们解决下:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 找到你项目下:</span></div><div class="line">android</div><div class="line">--gradle</div><div class="line">----wrapper</div><div class="line">------gradle-wrapper.properties <span class="comment"># 编辑这个文件</span></div></pre></td></tr></table></figure>
+<p>更改distributionUrl的值, 因为他是从默认的网站下载, 这里大家自己下载下 gradle 的包, 然后在下载目录启动 : http-server ./ -p 9000 这里大家可以用其它方式,只要能下载下来就好了, 你会发现非常快:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">distributionBase=GRADLE_USER_HOME</div><div class="line">distributionPath=wrapper/dists</div><div class="line">zipStoreBase=GRADLE_USER_HOME</div><div class="line">zipStorePath=wrapper/dists</div><div class="line">distributionUrl=http\://localhost:9000/gradle-2.4-all.zip</div></pre></td></tr></table></figure>
+<h2 id="安装-Genymotion-得先按照-Virtual-box"><a href="#安装-Genymotion-得先按照-Virtual-box" class="headerlink" title="安装 Genymotion, 得先按照 Virtual box"></a>安装 Genymotion, 得先按照 Virtual box</h2><p>新建虚拟机也是非常慢的, 基本下载个虚拟机得好久好久 , 快要好的时候就挂了, 当然如果你网速好的话请忽略这个问题, 那我们的解决办法是:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 进入你用户主目录</span></div><div class="line">&gt; <span class="built_in">cd</span> ~.Genymobile</div><div class="line"><span class="comment"># 在目录下回发现 genymotion.log 这个文件打开它, 找到下载虚拟机的连接</span></div><div class="line"><span class="comment"># 手动下载这个文件</span></div><div class="line"><span class="comment"># 下载完成后, 把虚拟机的文件 copy 到:</span></div><div class="line">&gt; <span class="built_in">cd</span> .Genymobile/Genymotion/ova</div><div class="line"><span class="comment"># 复制完成后, 重新在 Genymotion里 add 你下载的机器,就 OK 了</span></div></pre></td></tr></table></figure></p>
+<hr>
+<p>然后你就可以愉快的运行了, 但是可能还会发现大姨妈(红红的一片), 这个问题首先先把虚拟机的开发者模式打开: 设置-&gt;关于手机&gt;-&gt;不停的点击版本号;<br>如果还是不行, 就把虚拟机重新安装就好了;</p>
+<p> 如果运行 react-native run-android 后出现: connect devices time out, 首先检查模拟器的有没有连接上来:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&gt; adb devices</div><div class="line"><span class="comment"># 输出如下信息表示已经连接上了</span></div><div class="line">List of devices attached</div><div class="line">192.168.56.101:5555	device</div></pre></td></tr></table></figure></p>
+<p>有上面的连接但是还是连接模拟器超时, 请配置 Genymotion 的 Android sdk:<br><img src="/2016/12/29/reactNative环境搭建/48E8706F-7826-4177-A4C6-546AD2164DD8.png" alt="48E8706F-7826-4177-A4C6-546AD2164DD8.png" title=""></p>
+<p>这里不要使用 genymotion 的默认 sdk 改为我们的即可, 然后重新启动下模拟器, 就 OK 了</p>
+<p>如果出现不能连接服务器的大姨妈红请确保你的模拟器连接上了网络</p>
+<h2 id="开发规范"><a href="#开发规范" class="headerlink" title="开发规范"></a>开发规范</h2><p>初始化 eslint:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(</div><div class="line">  <span class="built_in">export</span> PKG=eslint-config-airbnb;</div><div class="line">  npm info <span class="string">"<span class="variable">$PKG</span>@latest"</span> peerDependencies --json | <span class="built_in">command</span> sed <span class="string">'s/[\&#123;\&#125;,]//g ; s/: /@/g'</span> | xargs npm install --save-dev <span class="string">"<span class="variable">$PKG</span>@latest"</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>.eslintrc 配置<br><figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"extends"</span>: <span class="string">"airbnb"</span>,</div><div class="line">  <span class="attr">"parser"</span>: <span class="string">"babel-eslint"</span>,</div><div class="line">  <span class="attr">"installedESLint"</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">"plugins"</span>: [</div><div class="line">    <span class="string">"react"</span>,</div><div class="line">    <span class="string">"import"</span></div><div class="line">  ],</div><div class="line">  <span class="attr">"env"</span>: &#123;</div><div class="line">    <span class="attr">"browser"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"node"</span>: <span class="literal">true</span>,</div><div class="line">    <span class="attr">"es6"</span>: <span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"rules"</span>: &#123;</div><div class="line">    <span class="attr">"react/jsx-filename-extension"</span>: <span class="number">0</span>,</div><div class="line">    <span class="attr">"indent"</span>: [<span class="number">2</span>, <span class="number">2</span>, &#123;</div><div class="line">      <span class="attr">"SwitchCase"</span>: <span class="number">1</span></div><div class="line">    &#125;]</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"globals"</span>: &#123;</div><div class="line">    <span class="attr">"fetch"</span>: <span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"settings"</span>: &#123;</div><div class="line">    <span class="attr">"ecmascript"</span>: <span class="number">6</span>,</div><div class="line">    <span class="attr">"jsx"</span>: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag"># react</a>
+          
+            <a href="/tags/reactNative/" rel="tag"># reactNative</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/08/JavaScript奇淫技巧/" rel="next" title="JavaScript奇淫技巧">
+                <i class="fa fa-chevron-left"></i> JavaScript奇淫技巧
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/29/我的2016/" rel="prev" title="我的2016">
+                我的2016 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/29/reactNative环境搭建/"
+           data-title="reactNative Android 环境搭建" data-url="https://zmGitHub.github.io/2016/12/29/reactNative环境搭建/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="钟 明" />
+          <p class="site-author-name" itemprop="name">钟 明</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Android-环境搭建"><span class="nav-number">1.</span> <span class="nav-text">Android 环境搭建:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">1.1.</span> <span class="nav-text">解决方案:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#环境变量配置"><span class="nav-number">2.</span> <span class="nav-text">环境变量配置:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#配置完成后更新配置"><span class="nav-number">2.1.</span> <span class="nav-text">配置完成后更新配置:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择对应的-Android-API-和构建工具"><span class="nav-number">2.2.</span> <span class="nav-text">选择对应的 Android API 和构建工具:</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-gradle"><span class="nav-number">3.</span> <span class="nav-text">安装 gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-Genymotion-得先按照-Virtual-box"><span class="nav-number">4.</span> <span class="nav-text">安装 Genymotion, 得先按照 Virtual box</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#开发规范"><span class="nav-number">5.</span> <span class="nav-text">开发规范</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">钟 明</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhongming"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("t9c0TlB1XMimGoeLWThMmlmV-gzGzoHsz", "aoldInwmjlSpGVOEpHHc5UQ0");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
