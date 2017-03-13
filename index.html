@@ -276,160 +276,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2017/05/12/ionic和cordova升级后不能跨域/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="钟 明">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="这样生活 很美...">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/12/ionic和cordova升级后不能跨域/" itemprop="url">
-                  ionic和cordova升级后不能跨域
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-12T20:15:55+08:00">
-                2017-05-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2017/05/12/ionic和cordova升级后不能跨域/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/12/ionic和cordova升级后不能跨域/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2017/05/12/ionic和cordova升级后不能跨域/" class="leancloud_visitors" data-flag-title="ionic和cordova升级后不能跨域">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>今天升级了ionic和cordova后发现以前能跨域的请求现在都不能了，升级的方法如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">bower update <span class="comment">###更新ionic的css,js等</span></div><div class="line"></div><div class="line">sudo npm update -g cordova <span class="comment">###更新cordova　到5.1.1 我的ionic 是1.5.5</span></div><div class="line"></div><div class="line"></div><div class="line">cordova platform update android <span class="comment">###更新cordova.js</span></div><div class="line"></div><div class="line">bower clean cache　<span class="comment">###清理下缓存</span></div></pre></td></tr></table></figure>
-<p>执行完上面的代码，在浏览器里面是没问题的，但是当我去build的时候就不得了，直接报错说我没有安装android sdk api 22　我更想api的时候又遇到坑了，因为我们大天朝我一直更新不了,在网上一番搜索后得到以下的解决办法:</p>
-<ol>
-<li>我常用的翻墙方法是改<a href="http://levi.cg.am/archives/3553" target="_blank" rel="external">hosts</a>文件(我是ubuntu其实windows也一样)，</li>
-</ol>
-<ol>
-<li>但是这样我们还是不能更新api，肿么办？改android-sdk-manager的下tool&gt;option:</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Proxy Settings</div><div class="line">    HTTP Proxy Serve =&gt; mirrors.opencas.cn</div><div class="line">    HTTP Proxy Port  =&gt; 80</div><div class="line"></div><div class="line">Force https ://...source tobe fetched using http:///... ###勾选这项</div><div class="line"></div><div class="line">Enable Preview Tools  ... ###勾选这项</div></pre></td></tr></table></figure>
-<p>其实是改了下代理而已，我们还是要学会使用镜像,这里面有很多的<a href="http://www.androiddevtools.cn/" target="_blank" rel="external">代理镜像</a></p>
-<p>现在解决了打包是不会报错了，但是安装apk 以后发现我连登录都不行了这下好玩了，后来到ionic 的论坛里面去瞎看无意间看到很多人在讨论 如何点击链接拨打电话：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"tab-item"</span> <span class="attr">href</span>=<span class="string">"tel:0039340123456"</span>&gt;</span>call me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"tab-item"</span>  <span class="attr">ng-href</span>=<span class="string">"tel:&#123;&#123;vm.article.tel&#125;&#125;"</span>&gt;</span>call me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>刚开始还不知道是什么情况，后来无意间看到他们说必须加上白名单才能用，我想是不是这个原因，后来查了资料发现cordova5.0版本以后的为了安全都禁止了发送请求,很多的东西我们必须自己配置:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cordova plugins add cordova-plugin-whitelist <span class="comment">###安装白名单插件</span></div></pre></td></tr></table></figure></p>
-<p>然后在我们app的config.xml中配置:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">"index.html"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">access</span> <span class="attr">origin</span>=<span class="string">"*"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">access</span> <span class="attr">origin</span>=<span class="string">"tel:*"</span> <span class="attr">launch-external</span>=<span class="string">"yes"</span>/&gt;</span> ###允许调用外部电话</div></pre></td></tr></table></figure></p>
-<p>具体的请看<a href="https://github.com/apache/cordova-plugin-whitelist" target="_blank" rel="external">白名单的API</a>,这下我们可以不用jsonp了，也不用担心跨域了</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/12/29/我的2016/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -793,6 +639,163 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/11/23/react-native-项目初始化问题/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="钟 明">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="这样生活 很美...">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/11/23/react-native-项目初始化问题/" itemprop="url">
+                  react-native 项目初始化问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-23T09:01:41+08:00">
+                2016-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/11/23/react-native-项目初始化问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/23/react-native-项目初始化问题/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/23/react-native-项目初始化问题/" class="leancloud_visitors" data-flag-title="react-native 项目初始化问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>从 ionic 跳到 react-native 具体哪个好用还没有深入的实践过, 今天兴高采烈的来试试 react-native 却发现挺多问题的:</p>
+<ul>
+<li><p>init 项目好慢:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">这基本都是网络的问题, 所以将npm仓库源替换为国内镜像:</div><div class="line">npm config <span class="built_in">set</span> registry https://registry.npm.taobao.org --global</div><div class="line">npm config <span class="built_in">set</span> disturl https://npm.taobao.org/dist --global</div><div class="line">改完后记得测试下:</div><div class="line">npm info react 可以看到仓库源是淘宝的了</div><div class="line"></div><div class="line">然后重新 init 记得加上 --verbose 看信息</div></pre></td></tr></table></figure>
+</li>
+<li><p>项目init 后一直卡着不懂:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">这个问题感觉比较坑, 完全没有任何错误信息,后来不停的找资料发现其实是 watchman 的问题导致的, 所以这就好解决了:</div><div class="line">rm -rf /usr/<span class="built_in">local</span>/var/run/watchman/ &amp;&amp; brew uninstall watchman &amp;&amp; brew install watchman</div><div class="line">跑完后继续 init, 然后发现不会卡住了</div></pre></td></tr></table></figure>
+</li>
+<li><p>watchman 一直重新连接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[sane] Warning: Lost connection to watchman, reconnecting..</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>你会发现不管怎么变动文件内容你模拟器里面都没有任何变化, 这个也是 watchman 的问题,我在 Google 上看了下基本的解决方法是:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ brew install rmtree</div><div class="line">$ brew rmtree watchman</div><div class="line">$ sudo rm -rf /usr/<span class="built_in">local</span>/var/run/watchman</div></pre></td></tr></table></figure></p>
+<p>完了以后:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/facebook/watchman.git</div><div class="line">$ <span class="built_in">cd</span> watchman</div><div class="line">$ git checkout v4.7.0</div><div class="line">$ ./autogen.sh</div><div class="line">$ ./configure</div><div class="line">$ make</div><div class="line">$ sudo make install</div><div class="line">``</div><div class="line">然后改下权限:</div><div class="line">```bash</div><div class="line">$ chmod 0700 /usr/<span class="built_in">local</span>/var/run/watchman/&lt;user&gt;-state</div></pre></td></tr></table></figure></p>
+<p>目前我遇到的问题就是这些,后面会继续更新…..</p>
+<p>资料:</p>
+<p><a href="http://stackoverflow.com/questions/40414166/react-native-npm-start-with-watchman-error" target="_blank" rel="external">stackoverflow</a></p>
+<p><a href="https://github.com/facebook/react-native/issues/9943" target="_blank" rel="external">react-native</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/10/08/JavaScript奇淫技巧/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -961,7 +964,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/08/16/hexo-setup/">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="钟 明">
@@ -986,8 +989,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/16/hexo-setup/" itemprop="url">
-                  使用 hexo 和 GitHubPage 搭建个人博客
+                <a class="post-title-link" href="/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/" itemprop="url">
+                  使用 webpack + react + redux + es6 搭建团队组件化前端项目
                 </a>
               
             
@@ -1003,8 +1006,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-08-16T14:24:14+08:00">
-                2016-08-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-03T16:41:33+08:00">
+                2016-07-03
               </time>
             
 
@@ -1026,8 +1029,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术研究/" itemprop="url" rel="index">
-                    <span itemprop="name">技术研究</span>
+                  <a href="/categories/前端框架/" itemprop="url" rel="index">
+                    <span itemprop="name">前端框架</span>
                   </a>
                 </span>
 
@@ -1044,8 +1047,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/08/16/hexo-setup/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/16/hexo-setup/" itemprop="commentCount"></span>
+                <a href="/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1055,7 +1058,7 @@
 
           
           
-             <span id="/2016/08/16/hexo-setup/" class="leancloud_visitors" data-flag-title="使用 hexo 和 GitHubPage 搭建个人博客">
+             <span id="/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/" class="leancloud_visitors" data-flag-title="使用 webpack + react + redux + es6 搭建团队组件化前端项目">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1084,32 +1087,701 @@
       
         
           
-            <p><a href="https://hexo.io/zh-cn/" target="_blank" rel="external">Hexo</a> 是一个快速、简洁且高效的博客框架。之前我还用过 ghost 之类的博客构建系统, 感觉还是这款用起来比较顺手, 而且高度可配置;刚开始也会在 <a href="http://www.csdn.net/" target="_blank" rel="external">CSDN</a>, <a href="http://segmentfault.com/" target="_blank" rel="external">segmentfault</a>, <a href="http://www.jianshu.com/" target="_blank" rel="external">简书</a> 写博客,<br>但是一直想有一个自己的博客,奈何不想去折腾买服务器和域名(其实木有钱), 所以就借助 hexo 和 gitHub 搭建自己的个人博客.</p>
-<h2 id="1-前-提"><a href="#1-前-提" class="headerlink" title="1. 前 提"></a>1. 前 提</h2><p>安装 Hexo<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install hexo-cli -g</div><div class="line">hexo init blog</div><div class="line">cd blog</div><div class="line">npm install</div><div class="line">hexo server</div></pre></td></tr></table></figure></p>
-<p>这里自己看官方文档就好…</p>
-<h2 id="2-gitHub-创建项目"><a href="#2-gitHub-创建项目" class="headerlink" title="2. gitHub 创建项目"></a>2. gitHub 创建项目</h2><p>这里就要啰嗦下, GitHubPage是你项目的演示网址, 但是只能是静态的 html 页面不过刚刚好满足我们搭建自己的博客</p>
-<ul>
-<li>首先登录你的 <a href="https://github.com" target="_blank" rel="external">gitHub</a></li>
-<li>然后创建一个项目<br><img src="https://pages.github.com/images/user-repo@2x.png" alt="项目创建"></li>
+            <p>　　因为最近在团队中尝试了 webpack、react、react-router、redux、es6 技术栈，所以总结出了一套 boilerplate，以便下次做项目时可以快速开始，并进行持续优化。对应的项目地址：<a href="https://github.com/zmGitHub/turbo-admin/tree/develop" target="_blank" rel="external">turbo-admin</a>和<a href="https://github.com/zmGitHub/antd-admin" target="_blank" rel="external">ant-admin</a></p>
+<h1 id="项目结构规划"><a href="#项目结构规划" class="headerlink" title="项目结构规划"></a>项目结构规划</h1><p>每个模块相关的 css、img、js 文件都放在一起，比较直观，删除模块时也会方便许多。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">bin</div><div class="line">|-- webpack.config.js               # webpack配置</div><div class="line">|-- config.js                       # 配置文件</div><div class="line">|-- index.js                        # 主入口文件</div><div class="line">|-- build.js                        # 生产配置</div><div class="line">|-- webpack.dll.js                  # 动态链接库,优化编译速度</div><div class="line">mock                                # 项目文档</div><div class="line">|-- api.js                          # API接口配置</div><div class="line">|-- index.js                        # mock 假数据入口(9999)</div><div class="line">node_modules</div><div class="line">src                                 # 项目源码</div><div class="line">|-- components                      # 公用组件</div><div class="line">|-- views                           # 页面目录</div><div class="line">|   |-- views1</div><div class="line">|   |   |-- index.js                # 页面逻辑</div><div class="line">|   |   |-- index.scss              # 页面样式</div><div class="line">|   |   |-- img                     # 页面图片</div><div class="line">|   |   |   |-- xx.png</div><div class="line">|   |   |-- package.json            # 当做单独模块处理</div><div class="line">|   |-- index.html                  # 入口页</div><div class="line">|   |-- main.js                     # 入口JS</div><div class="line">|-- components                      # 公用组件</div><div class="line">|   |-- loading</div><div class="line">|   |   |-- index.js</div><div class="line">|   |   |-- index.scss</div><div class="line">|   |   |-- __tests__</div><div class="line">|   |   |   |-- xx.js</div><div class="line">|-- store</div><div class="line">|   |-- util.js</div><div class="line">|   |-- createStore.js</div><div class="line">|   |-- location.js</div><div class="line">|   |-- reducers.js</div><div class="line">|   |-- menu.js</div><div class="line">|   |-- requireAuth.js</div><div class="line">|-- style                           #公共SCSS目录</div><div class="line">|   |-- index.scss</div><div class="line">|-- static                          #公共静态目录</div><div class="line">|   |-- xx.png</div><div class="line">package.json                        #项目依赖</div><div class="line">.babelrc                            #用了编译node端的es6</div><div class="line">.eslintrc                           #eslint配置文件</div><div class="line">.editorconfig                       #代码空格和缩进等配置</div><div class="line">READNE.md</div></pre></td></tr></table></figure></p>
+<h1 id="要完成的功能"><a href="#要完成的功能" class="headerlink" title="要完成的功能"></a>要完成的功能</h1><ul>
+<li>编译 jsx、es6、scss 等资源</li>
+<li>自动引入静态资源到相应 html 页面</li>
+<li>实时编译和刷新浏览器</li>
+<li>按指定模块化规范自动包装模块</li>
+<li>自动给 css 添加浏览器内核前缀</li>
+<li>按需打包合并 js、css</li>
+<li>压缩 js、css、html</li>
+<li>图片路径处理</li>
+<li>代码分割</li>
+<li>语法检查</li>
+<li>本地接口模拟服务<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1>根据前面的项目结构规划创建项目骨架,安装最基本的npm 包<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"bvs"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"bvs 数据管理"</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"clean"</span>: <span class="string">"rimraf dist"</span>,</div><div class="line">    <span class="attr">"dev"</span>: <span class="string">"better-npm-run dev"</span>,</div><div class="line">    <span class="attr">"prod"</span>: <span class="string">"better-npm-run prod"</span>,</div><div class="line">    <span class="attr">"mock"</span>: <span class="string">"nodemon --exec babel-node mock/"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"betterScripts"</span>: &#123;</div><div class="line">    <span class="attr">"dev"</span>: &#123;</div><div class="line">      <span class="attr">"command"</span>: <span class="string">"webpack-dashboard -c magenta -- nodemon --exec babel-node bin/ --ignore dist --ignore src"</span>,</div><div class="line">      <span class="attr">"env"</span>: &#123;</div><div class="line">        <span class="attr">"NODE_ENV"</span>: <span class="string">"development"</span>,</div><div class="line">        <span class="attr">"DEBUG"</span>: <span class="string">"app:*"</span></div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"prod"</span>: &#123;</div><div class="line">      <span class="attr">"command"</span>: <span class="string">"npm run clean &amp;&amp; babel-node bin/build"</span>,</div><div class="line">      <span class="attr">"env"</span>: &#123;</div><div class="line">        <span class="attr">"NODE_ENV"</span>: <span class="string">"production"</span>,</div><div class="line">        <span class="attr">"DEBUG"</span>: <span class="string">"app:*"</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  .....</div><div class="line">  .....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<blockquote>
-<p>这里注意了 仔细看清楚了: repository name 这个输入框, 这个xxx.github.io 就是你以后博客的地址,<br>  xxx 是你的 github 用户名也就是你的登录名 不要搞错了 要不就访问不了</p>
+<p>具体参考: <a href="https://github.com/zmGitHub/turbo-admin/tree/develop" target="_blank" rel="external">turbo-admin</a>和<a href="https://github.com/zmGitHub/antd-admin" target="_blank" rel="external">ant-admin</a></p>
+<h1 id="webpack-配置"><a href="#webpack-配置" class="headerlink" title="webpack 配置"></a>webpack 配置</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Webpack <span class="keyword">from</span> <span class="string">'webpack'</span>;</div><div class="line"><span class="keyword">import</span> cssnano <span class="keyword">from</span> <span class="string">'cssnano'</span>;</div><div class="line"><span class="keyword">import</span> HappyPack <span class="keyword">from</span> <span class="string">'happypack'</span>;</div><div class="line"><span class="keyword">import</span> HtmlWebpackPlugin <span class="keyword">from</span> <span class="string">'html-webpack-plugin'</span>;</div><div class="line"><span class="keyword">import</span> ExtractTextPlugin <span class="keyword">from</span> <span class="string">'extract-text-webpack-plugin'</span>;</div><div class="line"><span class="keyword">import</span> OpenBrowserWebpackPlugin <span class="keyword">from</span> <span class="string">'open-browser-webpack-plugin'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> _debug <span class="keyword">from</span> <span class="string">'debug'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">'./config'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> debug = _debug(<span class="string">'app:webpack.config'</span>);</div><div class="line"><span class="keyword">const</span> paths = config.utils_paths;</div><div class="line"><span class="keyword">const</span> BASE_CSS_LOADER = <span class="string">'css?sourceMap&amp;-minimize'</span>;</div><div class="line"><span class="comment">// 获取当前的执行环境</span></div><div class="line"><span class="keyword">const</span> &#123;</div><div class="line">  __DEV__,</div><div class="line">&#125; = config.globals;</div><div class="line">debug(<span class="string">'👻 初始化 webpack 默认配置...'</span>);</div><div class="line"><span class="keyword">const</span> APP_ENTRY = [<span class="string">'babel-polyfill'</span>, <span class="string">'eventsource-polyfill'</span>, paths.src(<span class="string">'main.js'</span>)];</div><div class="line"><span class="keyword">const</span> webpackConfig = &#123;</div><div class="line">  name: <span class="string">'client'</span>,</div><div class="line">  target: <span class="string">'web'</span>, <span class="comment">// 打包成什么类型</span></div><div class="line">  devtool: config.devtool,</div><div class="line">  entry: &#123;</div><div class="line">    app: __DEV__ ? APP_ENTRY.concat(<span class="string">`webpack-hot-middleware/client?path=<span class="subst">$&#123;config.public_path&#125;</span>__webpack_hmr`</span>) : APP_ENTRY,</div><div class="line">    vendor: config.vendor, <span class="comment">// 第三方包</span></div><div class="line">  &#125;,</div><div class="line">  output: &#123; <span class="comment">// 输出配置</span></div><div class="line">    filename: __DEV__ ? <span class="string">'[name].js?[hash]'</span> : <span class="string">'[name].[chunkhash].js'</span>,</div><div class="line">    chunkFilename: __DEV__ ? <span class="string">'[name].[id].js?[hash]'</span> : <span class="string">'[name].[id].[chunkhash].js'</span>,</div><div class="line">    path: paths.dist(),</div><div class="line">    publicPath: config.public_path,</div><div class="line">  &#125;,</div><div class="line">  resolve: &#123;</div><div class="line">    root: paths.src(), <span class="comment">// 根目录: 这样可以在内部使用时 是从 src 目录查找 不需要 ../../../ 这样的写法</span></div><div class="line">    modulesDirectories: [<span class="string">'node_modules'</span>, paths.base(<span class="string">'node_modules'</span>)],</div><div class="line">    extensions: [<span class="string">''</span>, <span class="string">'.js'</span>, <span class="string">'.jsx'</span>, <span class="string">'.json'</span>],</div><div class="line">    <span class="comment">// 导入时可以不用加后缀名, 但是一定要加个空字符因为覆盖了默认的导入行为, 比如导入 a.txt 文件就报错了</span></div><div class="line">    alias: &#123;</div><div class="line">      styles: paths.src(<span class="string">'styles'</span>),</div><div class="line">    &#125;,</div><div class="line">  &#125;,</div><div class="line">  .....</div></pre></td></tr></table></figure>
+<p>上面配置好以后执行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure></p>
+<p>之后你就可以看到:<br><img src="/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/dashboard.png" alt="dashboard.png" title=""><br>项目中编译 jsx 的时候没有启用.babelrc 文件这个文件只有启动node端的时候才会用到:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "presets": [</div><div class="line">    "es2015",</div><div class="line">    "stage-0"</div><div class="line">  ],</div><div class="line">  "plugins": ["add-module-exports", "transform-runtime"],</div><div class="line">  "sourceMaps": true, // 方便测试</div><div class="line">  "retainLines": true</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>服务端代码和热部署功能<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Koa <span class="keyword">from</span> <span class="string">'koa'</span>;</div><div class="line">....</div><div class="line"></div><div class="line">const debug = _debug(<span class="string">'app:server'</span>);</div><div class="line"><span class="keyword">const</span> paths = config.utils_paths; <span class="comment">// 文件目录 utility</span></div><div class="line"><span class="keyword">const</span> port = config.server_port; <span class="comment">// 服务器端口</span></div><div class="line"><span class="keyword">const</span> host = config.server_host; <span class="comment">// 服务 ip</span></div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa(); <span class="comment">// 创建 koa 的实例</span></div><div class="line"></div><div class="line"><span class="comment">// 是否启用 API 服务器</span></div><div class="line"><span class="keyword">if</span> (config.proxy &amp;&amp; config.proxy.enabled) &#123;</div><div class="line">  app.use(convert(proxy(config.proxy.options)));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 让 url 永远指向 index.html 方便 react-outer</span></div><div class="line">app.use(convert(historyApiFallback(&#123;</div><div class="line">  verbose: <span class="literal">false</span>, <span class="comment">// 取消日志消息</span></div><div class="line">&#125;)));</div><div class="line"></div><div class="line"><span class="comment">// 区分生产和开发</span></div><div class="line"><span class="keyword">if</span> (config.env === <span class="string">'development'</span>) &#123;</div><div class="line">  debug(<span class="string">'👽 开发模式加载完成'</span>);</div><div class="line">  <span class="keyword">const</span> &#123;</div><div class="line">    publicPath,</div><div class="line">  &#125; = webpackConfig.output;</div><div class="line">  <span class="keyword">const</span> complie = webpack(webpackConfig);</div><div class="line">  complie.apply(<span class="keyword">new</span> DashboardPlugin());</div><div class="line">  app.use(convert(webpackDevMiddleware(complie, &#123;</div><div class="line">    publicPath,</div><div class="line">    contentBase: paths.src(),</div><div class="line">    <span class="comment">// 服务一起动开始 webpack 编译</span></div><div class="line">    lazy: <span class="literal">false</span>,</div><div class="line">    hot: <span class="literal">true</span>,</div><div class="line">    quiet: <span class="literal">true</span>, <span class="comment">// 是否在 console 里面显示信息</span></div><div class="line">    noInfo: <span class="literal">true</span>, <span class="comment">// 是否在命令行中显示错误</span></div><div class="line">    stats: &#123;</div><div class="line">      colors: <span class="literal">true</span>,</div><div class="line">    &#125;,</div><div class="line">    historyApiFallback: <span class="literal">true</span>,</div><div class="line">  &#125;)));</div><div class="line">  <span class="comment">// 启用热部署插件</span></div><div class="line">  app.use(convert(webpackHotMiddleware(complie)));</div><div class="line">  <span class="comment">// 静态文件请求</span></div><div class="line">  app.use(convert(server(paths.src(<span class="string">'static'</span>))));</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  debug(<span class="string">'😻 打包完成, 模拟线上环境'</span>);</div><div class="line">  app.use(convert(server(paths.dist())));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>还需在代码里添加如下代码监听模块更新<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 开发环境配置: 生产下应该去掉</span></div><div class="line"><span class="keyword">if</span> (__DEV__ &amp;&amp; <span class="built_in">module</span>.hot) &#123;</div><div class="line">  <span class="keyword">const</span> renderApp = render;</div><div class="line">  <span class="comment">// 调用 readbox 显示开发中的错误</span></div><div class="line">  <span class="keyword">const</span> renderError = (error) =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> RedBox = <span class="built_in">require</span>(<span class="string">'redbox-react'</span>).default;</div><div class="line">    ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">RedBox</span> <span class="attr">error</span>=<span class="string">&#123;error&#125;</span> /&gt;</span>, MOUNT_NODE);</span></div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  render = () =&gt; &#123;</div><div class="line">    try &#123;</div><div class="line">      renderApp();</div><div class="line">    &#125; catch (error) &#123;</div><div class="line">      renderError(error);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  // 建立热部署</div><div class="line">  module.hot.accept('./views/index', () =&gt; &#123;</div><div class="line">    setImmediate(() =&gt; &#123;</div><div class="line">      // 先卸载之前的应用</div><div class="line">      ReactDOM.unmountComponentAtNode(MOUNT_NODE);</div><div class="line">      render();</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 页面渲染</div><div class="line">render();</div></pre></td></tr></table></figure></p>
+<h1 id="scss图片等静态文件处理"><a href="#scss图片等静态文件处理" class="headerlink" title="scss图片等静态文件处理"></a>scss图片等静态文件处理</h1><p>开发模式下基本都是在style 标签中所以项目启动后会白屏一下, 后面打包的时候这些问题将会解决掉:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// sassloader 配置</span></div><div class="line"> sassLoader: &#123;</div><div class="line">   includePaths: paths.src(<span class="string">'styles'</span>),</div><div class="line"> &#125;,</div><div class="line"> <span class="comment">// postcss 配置</span></div><div class="line"> postcss: [</div><div class="line">   cssnano(&#123;</div><div class="line">     autoprefixer: &#123;</div><div class="line">       add: <span class="literal">true</span>,</div><div class="line">       remove: <span class="literal">true</span>,</div><div class="line">       browsers: [<span class="string">'last 2 versions'</span>, <span class="string">'Firefox ESR'</span>, <span class="string">'&gt; 1%'</span>, <span class="string">'ie &gt;= 9'</span>, <span class="string">'iOS &gt;= 8'</span>, <span class="string">'Android &gt;= 4'</span>],</div><div class="line">     &#125;,</div><div class="line">     discardComments: &#123;</div><div class="line">       removeAll: <span class="literal">true</span>,</div><div class="line">     &#125;,</div><div class="line">     discardUnused: <span class="literal">false</span>,</div><div class="line">     mergeIdents: <span class="literal">false</span>,</div><div class="line">     reduceIdents: <span class="literal">false</span>,</div><div class="line">     safe: <span class="literal">true</span>,</div><div class="line">     sourcemap: <span class="literal">true</span>,</div><div class="line">   &#125;),</div><div class="line"> ],</div></pre></td></tr></table></figure></p>
+<p>使用ExtractTextPlugin插件单独打包 css 文件:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 打包配置 将 css 从 style 标签里面抽到 app.css 里面</span></div><div class="line"><span class="comment">// 因为开发环境下没有启用 ExtractTextPlugin 所以样式都是在 style 标签里面</span></div><div class="line"><span class="keyword">if</span> (!__DEV__) &#123;</div><div class="line">  debug(<span class="string">'启用 ExtractTextPlugin...'</span>);</div><div class="line">  webpackConfig.module.loaders.filter(loader =&gt;</div><div class="line">    loader.loaders &amp;&amp; loader.loaders.find(name =&gt; <span class="regexp">/css/</span>.test(name.split(<span class="string">'?'</span>)[<span class="number">0</span>]))</div><div class="line">  ).forEach((loader) =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> cssLoader = loader;</div><div class="line">    <span class="keyword">const</span> first = cssLoader.loaders[<span class="number">0</span>];</div><div class="line">    <span class="keyword">const</span> rest = cssLoader.loaders.slice(<span class="number">1</span>);</div><div class="line">    cssLoader.loader = ExtractTextPlugin.extract(first, rest.join(<span class="string">'!'</span>));</div><div class="line">    <span class="keyword">delete</span> cssLoader.loaders;</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  webpackConfig.plugins.push(</div><div class="line">    <span class="keyword">new</span> ExtractTextPlugin(<span class="string">'[name].[contenthash].css'</span>, &#123;</div><div class="line">      allChunks: <span class="literal">true</span>,</div><div class="line">    &#125;));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>#本地接口模拟服务<br>前后端分离后, 前端的工作不受后台的影响, 所以我们的工作是并行的, 前端的接口数据格式由我们定, 我这里的处理方式是, koa 里面开启 proxy, 只有发现是 /api/** 打头的就代理的到 mock 端:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Koa <span class="keyword">from</span> <span class="string">'koa'</span>;</div><div class="line"><span class="keyword">import</span> Mock <span class="keyword">from</span> <span class="string">'mockjs'</span>;</div><div class="line"><span class="keyword">import</span> pathToRegexp <span class="keyword">from</span> <span class="string">'path-to-regexp'</span>;</div><div class="line"><span class="keyword">import</span> _debug <span class="keyword">from</span> <span class="string">'debug'</span>;</div><div class="line"><span class="keyword">import</span> APIS <span class="keyword">from</span> <span class="string">'./api'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> info = _debug(<span class="string">'app:mock'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</div><div class="line"></div><div class="line">app.use(<span class="keyword">async</span>(ctx, next) =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> reqAPI = ctx.path;</div><div class="line">  <span class="keyword">let</span> mockConfig = <span class="literal">null</span>;</div><div class="line">  APIS.forEach((api) =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> regexp = api.URL.includes(<span class="string">':'</span>) &amp;&amp; pathToRegexp(api.URL);</div><div class="line">    <span class="keyword">if</span> (regexp &amp;&amp; regexp.test(reqAPI)) &#123;</div><div class="line">      mockConfig = api[ctx.method];</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (api.URL === reqAPI) &#123;</div><div class="line">      mockConfig = api[ctx.method];</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">const</span> responseData = Mock.mock(mockConfig || &#123;</div><div class="line">    success: <span class="literal">false</span>,</div><div class="line">    error: <span class="string">`没有配置<span class="subst">$&#123;reqAPI&#125;</span>, 请添加`</span>,</div><div class="line">    data: <span class="literal">null</span>,</div><div class="line">  &#125;);</div><div class="line">  ctx.body = responseData;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`接口地址: http://localhost:9999<span class="subst">$&#123;reqAPI&#125;</span>`</span>);</div><div class="line">  <span class="keyword">await</span> next();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">9999</span>, (err) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    info(err);</div><div class="line">  &#125;</div><div class="line">  info(<span class="string">'📢 mockser 启动成功, 端口: 9999'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>　　这里的核心模块是path-to-regexp和 mockJS 所以如果想配置接口其实也是非常的容易只需要在 api.js这个文件里面添加 API 路径和返回的数据格式就可以了:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> API = [&#123;</div><div class="line">  URL: <span class="string">'/api/user/:id(\\d+)'</span>, <span class="comment">// 请注意如果要指明 id 为数字请添加(\\d+)</span></div><div class="line">  GET: &#123;</div><div class="line">    <span class="string">'success|1'</span>: [<span class="literal">true</span>, <span class="literal">false</span>],</div><div class="line">    result: &#123;</div><div class="line">      total: <span class="number">10</span>,</div><div class="line">      <span class="string">'data|100'</span>: [&#123;</div><div class="line">        username: <span class="string">'@CNAME'</span>,</div><div class="line">        <span class="string">'userId|+1'</span>: <span class="number">1</span>,</div><div class="line">        clientName: <span class="string">'@CTITLE(2, 5)'</span>,</div><div class="line">        <span class="string">'pointScore|1-99'</span>: <span class="number">0</span>,</div><div class="line">        <span class="string">'freezePointScore|1-99'</span>: <span class="number">0</span>,</div><div class="line">        registerDate: <span class="string">'@DATE(yyyy-MM-dd)'</span>,</div><div class="line">        lastLogin: <span class="string">'@TIME(a HH:mm:ss)'</span>,</div><div class="line">        <span class="string">'locked|1'</span>: [<span class="literal">true</span>, <span class="literal">false</span>],</div><div class="line">      &#125;],</div><div class="line">    &#125;,</div><div class="line">    error: <span class="string">''</span>,</div><div class="line">  &#125;,</div><div class="line">  ....</div></pre></td></tr></table></figure></p>
+<p>最终打包发布不受任何的影响, 是不是非常的方便呢</p>
+<h1 id="webpack问题和优化"><a href="#webpack问题和优化" class="headerlink" title="webpack问题和优化"></a>webpack问题和优化</h1><p>可能眼尖的小伙伴发现了我们项目的编译时间有点长(启动的时候), 打包时也是非常的长20s 左右, 我尝试过的方法是:</p>
 <ul>
-<li>项目创建了好了 不用管它 来看下一步</li>
-</ul>
+<li>将第三方的包全局引入</li>
+<li>使用 happypack</li>
+<li>使用 dll 方案</li>
+<li>使用 antd 的时候添加babel-plugin-import, 切记不要再引入antd.less了 这样会重复引入<blockquote>
+<p>这里说个题外话, ie8和 ie9对于 单个 css 文件的大小不能超过288k, 小伙伴们注意了! 要不你会发现你的样式一半有一半没有, 然后你就会开始怀疑各种人生, 吼吼…..</p>
 </blockquote>
-<h2 id="3-本地配置和预览"><a href="#3-本地配置和预览" class="headerlink" title="3. 本地配置和预览"></a>3. 本地配置和预览</h2><p>在本地用 hexo init 了以后就可以开始写博客了, 但是在写之前我们还需要配置下自己的博客, 下面是我的配置项(只列出我配置的其他的都是默认):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">title: 这样生活 很美... ## 这是你博客的名称</div><div class="line">subtitle:             ## 副标题</div><div class="line">description:          ## 博客的描述</div><div class="line">author: 钟 明          ## 博主</div><div class="line">language: zh-Hans     ## 国际化 这里是中文</div><div class="line">timezone:             ## 时间戳 可以不用管</div><div class="line"></div><div class="line">url: https://zmGitHub.github.io ## 这就是你在 github 上创建的项目名</div><div class="line">root: /  ## 资源访问起点</div><div class="line">permalink: :year/:month/:day/:title/</div><div class="line">permalink_defaults:</div><div class="line"></div><div class="line">.....</div><div class="line">.....</div><div class="line">## https://hexo.io/themes/</div><div class="line">theme: next ## 这里我用了 next 主题 看自己喜欢了</div><div class="line"></div><div class="line"># 部署配置</div><div class="line">## 文档: https://hexo.io/docs/deployment.html</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: https://github.com/zmGitHub/zmGitHub.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>这里还是要啰嗦下, 我们在 github 上是可以去配置项目的GitHub Pages<br>有一个Automatic page generator 的功能这是项目的说明主页, 不要把自己的博客放到这个分支上</p>
-</blockquote>
-<h2 id="主题配置和插件使用"><a href="#主题配置和插件使用" class="headerlink" title="主题配置和插件使用"></a>主题配置和插件使用</h2><p>我这里是使用了 <a href="http://theme-next.iissnan.com/" target="_blank" rel="external">Next</a> 主题, 光 star 就有9000千多,<br>看自己喜好,主题很多, 他的配置文档写的非常详细我就不多说<br>然后我使用了这些插件: </p>
-<ul>
-<li>多说</li>
-<li>百度分析</li>
-<li>Google 分析</li>
-<li>文章阅读数量统计</li>
+</li>
 </ul>
-<p>基本就是这样了关于 hexo 搭建的文章太多了, 另外 <a href="http://daringfireball.net/projects/markdown/basics" target="_blank" rel="external">markdown</a> 的语法</p>
+<p>happypack 基本是解决了编译单线程的问题,所以在配置的时候注意下参数:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> HappyPack(&#123;</div><div class="line">  id: <span class="string">'babel'</span>,</div><div class="line">  theads: <span class="number">4</span>, <span class="comment">// 官方推荐,测试发现这个数值是最快的</span></div><div class="line">  loaders: [&#123;</div><div class="line">    path: paths.nodeModules(<span class="string">'babel-loader/lib/index.js'</span>),</div><div class="line">    query: <span class="string">`?<span class="subst">$&#123;JSON.stringify(config.babelConfig)&#125;</span>`</span>,</div><div class="line">  &#125;],</div><div class="line">&#125;),</div></pre></td></tr></table></figure></p>
+<p>对于 dll 的方案我不是很推荐, 无非就是生成一些映射,但是感觉没有什么用啊, 速度什么的没有提上来:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第三方依赖库</span></div><div class="line"><span class="keyword">const</span> VENDORS = [</div><div class="line">  <span class="string">'antd'</span>,</div><div class="line">  <span class="string">'echarts'</span>,</div><div class="line">  <span class="string">'superagent'</span>,</div><div class="line">  <span class="string">'babel-polyfill'</span>,</div><div class="line">  <span class="string">'eventsource-polyfill'</span>,</div><div class="line">  <span class="string">'element-resize-event'</span>,</div><div class="line">  <span class="string">'react'</span>,</div><div class="line">  <span class="string">'react-dom'</span>,</div><div class="line">  <span class="string">'react-redux'</span>,</div><div class="line">  <span class="string">'react-router'</span>,</div><div class="line">  <span class="string">'redux'</span>,</div><div class="line">  <span class="string">'redux-thunk'</span>,</div><div class="line">];</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  context: base(),</div><div class="line">  entry: &#123;</div><div class="line">    vendor: VENDORS,</div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    path: base(<span class="string">'dll'</span>),</div><div class="line">    filename: <span class="string">'[name].dll.js'</span>,</div><div class="line">    library: <span class="string">'[name]'</span>,</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    <span class="keyword">new</span> webpack.DllPlugin(&#123;</div><div class="line">      path: base(<span class="string">'manifest.json'</span>),</div><div class="line">      name: <span class="string">'[name]'</span>,</div><div class="line">      context: base(),</div><div class="line">    &#125;),</div><div class="line">  ],</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>#结语</p>
+<p>　　开发这套体系大概花费了我一个多星期, 中间不少的修修补补, 很多问题都是在项目实际开发中发现的, 然后遇到问题解决, 记录下来, 方便下次看, 这个体系我会继续维护下去,<a href="https://github.com/zmGitHub/turbo-admin/tree/develop" target="_blank" rel="external">turbo-admin</a>　这个是我自己写的一些样式组件,<a href="https://github.com/zmGitHub/antd-admin" target="_blank" rel="external">ant-admin</a> 这个用的是 antd 的,目前项目基本在跑这个, 欢迎大家 star!</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/06/13/eslint-airbnb-初始化/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="钟 明">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="这样生活 很美...">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/06/13/eslint-airbnb-初始化/" itemprop="url">
+                  eslint airbnb 初始化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-06-13T16:15:30+08:00">
+                2016-06-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技巧积累/" itemprop="url" rel="index">
+                    <span itemprop="name">技巧积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/06/13/eslint-airbnb-初始化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/13/eslint-airbnb-初始化/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/13/eslint-airbnb-初始化/" class="leancloud_visitors" data-flag-title="eslint airbnb 初始化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>　　现在我们的代码规范都是使用了 eslint 去规范我们前端代码的开发, 但是每次使用 eslint –init 之后 经常出现各种依赖不协调的警告, 看着挺蛋疼作为一个有追求的前端来说, 具体的解决办法是:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(</div><div class="line">  <span class="built_in">export</span> PKG=eslint-config-airbnb;</div><div class="line">  npm info <span class="string">"<span class="variable">$PKG</span>@latest"</span> peerDependencies --json | <span class="built_in">command</span> sed <span class="string">'s/[\&#123;\&#125;,]//g ; s/: /@/g'</span> | xargs npm install --save-dev <span class="string">"<span class="variable">$PKG</span>@latest"</span></div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p>　　其实原理很简单就是分析出 eslint 下各种依赖的最新包然后安装它是不是很简单呢! 只要把上面的命令在命令行中 copy 一下就 OK 了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/03/11/JS防抖动/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="钟 明">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="这样生活 很美...">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/03/11/JS防抖动/" itemprop="url">
+                  JS防抖动
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-03-11T15:29:25+08:00">
+                2016-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技巧积累/" itemprop="url" rel="index">
+                    <span itemprop="name">技巧积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/03/11/JS防抖动/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/JS防抖动/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/03/11/JS防抖动/" class="leancloud_visitors" data-flag-title="JS防抖动">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>　　目前遇到的情况是, 现在还是使用公司的框架在表单处理非常的复杂, 常常出现表单远程校验的问题, 这个时候就遇到了频繁查询的问题, 因为目前的做法是 input 的 change 过后就去查询后台的接口这导致非常多的性能损耗和服务器不必要的压力, 在开发过程中了我用了如下的解决方案:</p>
+<blockquote>
+<p>明白了防抖动的原理其实就是: 延迟处理, 所以我在开发中的是这样解决的:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">event.on(<span class="string">'change'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> fun;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="keyword">if</span>(fun) clearTimeout(fun);</div><div class="line">        fun = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            <span class="comment">// 我们的异步处理函数</span></div><div class="line">        &#125;,<span class="number">500</span>);</div><div class="line">    &#125;</div><div class="line">&#125;());</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>这种解决方案是把函数放在了定时器中, 当然我们可以把这个函数当成一个公共的方法:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">function swall(something,delay)&#123;</div><div class="line">    var fun;</div><div class="line">    return function()&#123;</div><div class="line">        if(fun) clearTimeout(fun);</div><div class="line">        fun = setTimeout(function()&#123;</div><div class="line">            something();</div><div class="line">        &#125;,delay);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"># 比如滚动的时候处理方法</div><div class="line">event.on('scroll', swall(func,1000))</div><div class="line">event.on('scroll', swall(func,2000))</div></pre></td></tr></table></figure></p>
+<p>　　我大概还看了一下其他的解决方案就是节点流的处理方式, 我对于他们的理解是我们平时坐电梯什么的就比较像, 比如人多的时候有人进来电梯开始计时如果中途有人按了门铃那电梯开始重新计算直达没有人按了就开始运行, 函数节流就比如是 VIP 电梯老板来了 那就把老板送到楼上再下来接其他人, 不管中途有没有人按电梯(呃! 感觉好像很欠打的样子….)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2015/07/05/ubuntu14-10创建应用快捷方式/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="钟 明">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="这样生活 很美...">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/07/05/ubuntu14-10创建应用快捷方式/" itemprop="url">
+                  ubuntu14.10创建应用快捷方式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-05T15:57:24+08:00">
+                2015-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技巧积累/" itemprop="url" rel="index">
+                    <span itemprop="name">技巧积累</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/07/05/ubuntu14-10创建应用快捷方式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/07/05/ubuntu14-10创建应用快捷方式/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/07/05/ubuntu14-10创建应用快捷方式/" class="leancloud_visitors" data-flag-title="ubuntu14.10创建应用快捷方式">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在ubuntu下使用webStorm，phpStorm,IDEA等编辑器的时候，不能像windows下那么方便的创建快捷方式，所以和大家分享下我在ubuntu下是如何创建应用的快捷方式的;</p>
+<ol>
+<li>首先在你安装应用的目录下创建一个新的文本(其实可以随便在任何一个地方创建)，然后在添加如下内容：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">[Desktop Entry]</div><div class="line">Categories=Development;</div><div class="line">Comment[zh_CN]=</div><div class="line">Comment=</div><div class="line">Exec=/opt/WebStorm/bin/webstorm.sh 　　####这里是大家需要注意的地方.和你自己的相对应</div><div class="line">GenericName[zh_CN]=IDE</div><div class="line">GenericName=IDE</div><div class="line">Icon=/opt/WebStorm/bin/webide.png　　　####这里是大家需要注意的地方.和你自己的相对应</div><div class="line">Name[zh_CN]=webStorm　　　　　　　　　　　####应用的中文名字，可以随便取</div><div class="line">Name=webStorm　　　　　　　　　　　　　　　####应用的英文名字，可以随便取</div><div class="line">Path=</div><div class="line">StartupNotify=true</div><div class="line">Terminal=false</div><div class="line">Type=Application</div><div class="line">X-DBUS-ServiceName=</div><div class="line">X-DBUS-StartupType=</div><div class="line">X-KDE-SubstituteUID=false</div><div class="line">X-KDE-Username=owen</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>大家改好后请将我后面的注释去掉</strong></p>
+<p>2.保存编辑．将该文件的后缀名改为 desktop,比如：<strong>webStorm.desktop</strong></p>
+<p>右击文件，找到权限，如下图：<br><img src="/2015/07/05/ubuntu14-10创建应用快捷方式/1557127733-5599384d0b3ed.png" alt="1557127733-5599384d0b3ed.png" title=""></p>
+<p>点击关闭．就ok了，然后复制到桌面就可以了，其它的应用也是如此……</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2015/05/12/ionic和cordova升级后不能跨域/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="钟 明">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="这样生活 很美...">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/05/12/ionic和cordova升级后不能跨域/" itemprop="url">
+                  ionic和cordova升级后不能跨域
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-12T21:17:40+08:00">
+                2015-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/05/12/ionic和cordova升级后不能跨域/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/05/12/ionic和cordova升级后不能跨域/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/05/12/ionic和cordova升级后不能跨域/" class="leancloud_visitors" data-flag-title="ionic和cordova升级后不能跨域">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天升级了ionic和cordova后发现以前能跨域的请求现在都不能了，升级的方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">bower update <span class="comment">###更新ionic的css,js等</span></div><div class="line"></div><div class="line">sudo npm update -g cordova <span class="comment">###更新cordova　到5.1.1 我的ionic 是1.5.5</span></div><div class="line"></div><div class="line"></div><div class="line">cordova platform update android <span class="comment">###更新cordova.js</span></div><div class="line"></div><div class="line">bower clean cache　<span class="comment">###清理下缓存</span></div></pre></td></tr></table></figure>
+<p>执行完上面的代码，在浏览器里面是没问题的，但是当我去build的时候就不得了，直接报错说我没有安装android sdk api 22　我更想api的时候又遇到坑了，因为我们大天朝我一直更新不了,在网上一番搜索后得到以下的解决办法:</p>
+<ol>
+<li>我常用的翻墙方法是改<a href="http://levi.cg.am/archives/3553" target="_blank" rel="external">hosts</a>文件(我是ubuntu其实windows也一样)，</li>
+</ol>
+<ol>
+<li>但是这样我们还是不能更新api，肿么办？改android-sdk-manager的下tool&gt;option:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Proxy Settings</div><div class="line">    HTTP Proxy Serve =&gt; mirrors.opencas.cn</div><div class="line">    HTTP Proxy Port  =&gt; 80</div><div class="line"></div><div class="line">Force https ://...source tobe fetched using http:///... ###勾选这项</div><div class="line"></div><div class="line">Enable Preview Tools  ... ###勾选这项</div></pre></td></tr></table></figure>
+<p>其实是改了下代理而已，我们还是要学会使用镜像,这里面有很多的<a href="http://www.androiddevtools.cn/" target="_blank" rel="external">代理镜像</a></p>
+<p>现在解决了打包是不会报错了，但是安装apk 以后发现我连登录都不行了这下好玩了，后来到ionic 的论坛里面去瞎看无意间看到很多人在讨论 如何点击链接拨打电话：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"tab-item"</span> <span class="attr">href</span>=<span class="string">"tel:0039340123456"</span>&gt;</span>call me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"tab-item"</span>  <span class="attr">ng-href</span>=<span class="string">"tel:&#123;&#123;vm.article.tel&#125;&#125;"</span>&gt;</span>call me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>刚开始还不知道是什么情况，后来无意间看到他们说必须加上白名单才能用，我想是不是这个原因，后来查了资料发现cordova5.0版本以后的为了安全都禁止了发送请求,很多的东西我们必须自己配置:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cordova plugins add cordova-plugin-whitelist <span class="comment">###安装白名单插件</span></div></pre></td></tr></table></figure></p>
+<p>然后在我们app的config.xml中配置:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">"index.html"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">access</span> <span class="attr">origin</span>=<span class="string">"*"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">access</span> <span class="attr">origin</span>=<span class="string">"tel:*"</span> <span class="attr">launch-external</span>=<span class="string">"yes"</span>/&gt;</span> ###允许调用外部电话</div></pre></td></tr></table></figure></p>
+<p>具体的请看<a href="https://github.com/apache/cordova-plugin-whitelist" target="_blank" rel="external">白名单的API</a>,这下我们可以不用jsonp了，也不用担心跨域了</p>
 
           
         
@@ -1297,157 +1969,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2015/03/27/ubuntu-14-04-搭建ionic的开发环境/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="钟 明">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.png">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="这样生活 很美...">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2015/03/27/ubuntu-14-04-搭建ionic的开发环境/" itemprop="url">
-                  ubuntu 14.04 搭建ionic的开发环境
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-03-27T22:41:17+08:00">
-                2015-03-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2015/03/27/ubuntu-14-04-搭建ionic的开发环境/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/27/ubuntu-14-04-搭建ionic的开发环境/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2015/03/27/ubuntu-14-04-搭建ionic的开发环境/" class="leancloud_visitors" data-flag-title="ubuntu 14.04 搭建ionic的开发环境">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>　　这些天一直在研究ionic开发，发现很多大神都是在window下面开发的，但是我是在ubuntu14.04 下面进行开发，发现环境上的很多的问题和他们的不一样，所以自己总结了一下在ubuntu下面的差异，写的不好欢迎大家指导</p>
-<ul>
-<li>ubuntu14.04 jdk 安装（我的是jdk 8）<br>  下载linux系统下的jdk（这里就不说明了）</li>
-<li>android sdk 安装<br>1.因为android sdk 是32位的 但是我们的系统是64位所以要安装32位的运行库<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这里注意啦！因为ubuntu13.0以后的都是上面这句代码，可是我一开始就用了下面句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ia32-libs  <span class="comment">## 这是ubtun13的 更高的版本已经移除了</span></div></pre></td></tr></table></figure></p>
-<p>如果是这里没有安装好这个库，后面生成apk的时候就等着蛋疼吧！（因为没有任何错误信息）<br>2.因为我们的google被墙所以android sdk 的下载就成了问题：大家记得翻翻墙吧!</p>
-<p>未完。。。。。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1488,7 +2016,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1497,7 +2025,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1506,7 +2034,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

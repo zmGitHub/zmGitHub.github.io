@@ -1,0 +1,900 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="https://fonts.proxy.ustclug.org/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="react,webpack," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="因为最近在团队中尝试了 webpack、react、react-router、redux、es6 技术栈，所以总结出了一套 boilerplate，以便下次做项目时可以快速开始，并进行持续优化。对应的项目地址：turbo-admin和ant-admin
+项目结构规划每个模块相关的 css、img、js 文件都放在一起，比较直观，删除模块时也会方便许多。123456789101112131415">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 webpack + react + redux + es6 搭建团队组件化前端项目">
+<meta property="og:url" content="https://zmGitHub.github.io/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/index.html">
+<meta property="og:site_name" content="这样生活 很美...">
+<meta property="og:description" content="因为最近在团队中尝试了 webpack、react、react-router、redux、es6 技术栈，所以总结出了一套 boilerplate，以便下次做项目时可以快速开始，并进行持续优化。对应的项目地址：turbo-admin和ant-admin
+项目结构规划每个模块相关的 css、img、js 文件都放在一起，比较直观，删除模块时也会方便许多。123456789101112131415">
+<meta property="og:image" content="https://zmGitHub.github.io/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/dashboard.png">
+<meta property="og:updated_time" content="2017-03-13T11:06:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用 webpack + react + redux + es6 搭建团队组件化前端项目">
+<meta name="twitter:description" content="因为最近在团队中尝试了 webpack、react、react-router、redux、es6 技术栈，所以总结出了一套 boilerplate，以便下次做项目时可以快速开始，并进行持续优化。对应的项目地址：turbo-admin和ant-admin
+项目结构规划每个模块相关的 css、img、js 文件都放在一起，比较直观，删除模块时也会方便许多。123456789101112131415">
+<meta name="twitter:image" content="https://zmGitHub.github.io/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/dashboard.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '10433083',
+      author: '主编大人'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://zmGitHub.github.io/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/"/>
+
+
+
+
+
+  <title> 使用 webpack + react + redux + es6 搭建团队组件化前端项目 | 这样生活 很美... </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?50e28ddb289955cc76190aef55d80365";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">这样生活 很美...</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="钟 明">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="这样生活 很美...">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                使用 webpack + react + redux + es6 搭建团队组件化前端项目
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-07-03T16:41:33+08:00">
+                2016-07-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/前端框架/" itemprop="url" rel="index">
+                    <span itemprop="name">前端框架</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/" class="leancloud_visitors" data-flag-title="使用 webpack + react + redux + es6 搭建团队组件化前端项目">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>　　因为最近在团队中尝试了 webpack、react、react-router、redux、es6 技术栈，所以总结出了一套 boilerplate，以便下次做项目时可以快速开始，并进行持续优化。对应的项目地址：<a href="https://github.com/zmGitHub/turbo-admin/tree/develop" target="_blank" rel="external">turbo-admin</a>和<a href="https://github.com/zmGitHub/antd-admin" target="_blank" rel="external">ant-admin</a></p>
+<h1 id="项目结构规划"><a href="#项目结构规划" class="headerlink" title="项目结构规划"></a>项目结构规划</h1><p>每个模块相关的 css、img、js 文件都放在一起，比较直观，删除模块时也会方便许多。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">bin</div><div class="line">|-- webpack.config.js               # webpack配置</div><div class="line">|-- config.js                       # 配置文件</div><div class="line">|-- index.js                        # 主入口文件</div><div class="line">|-- build.js                        # 生产配置</div><div class="line">|-- webpack.dll.js                  # 动态链接库,优化编译速度</div><div class="line">mock                                # 项目文档</div><div class="line">|-- api.js                          # API接口配置</div><div class="line">|-- index.js                        # mock 假数据入口(9999)</div><div class="line">node_modules</div><div class="line">src                                 # 项目源码</div><div class="line">|-- components                      # 公用组件</div><div class="line">|-- views                           # 页面目录</div><div class="line">|   |-- views1</div><div class="line">|   |   |-- index.js                # 页面逻辑</div><div class="line">|   |   |-- index.scss              # 页面样式</div><div class="line">|   |   |-- img                     # 页面图片</div><div class="line">|   |   |   |-- xx.png</div><div class="line">|   |   |-- package.json            # 当做单独模块处理</div><div class="line">|   |-- index.html                  # 入口页</div><div class="line">|   |-- main.js                     # 入口JS</div><div class="line">|-- components                      # 公用组件</div><div class="line">|   |-- loading</div><div class="line">|   |   |-- index.js</div><div class="line">|   |   |-- index.scss</div><div class="line">|   |   |-- __tests__</div><div class="line">|   |   |   |-- xx.js</div><div class="line">|-- store</div><div class="line">|   |-- util.js</div><div class="line">|   |-- createStore.js</div><div class="line">|   |-- location.js</div><div class="line">|   |-- reducers.js</div><div class="line">|   |-- menu.js</div><div class="line">|   |-- requireAuth.js</div><div class="line">|-- style                           #公共SCSS目录</div><div class="line">|   |-- index.scss</div><div class="line">|-- static                          #公共静态目录</div><div class="line">|   |-- xx.png</div><div class="line">package.json                        #项目依赖</div><div class="line">.babelrc                            #用了编译node端的es6</div><div class="line">.eslintrc                           #eslint配置文件</div><div class="line">.editorconfig                       #代码空格和缩进等配置</div><div class="line">READNE.md</div></pre></td></tr></table></figure></p>
+<h1 id="要完成的功能"><a href="#要完成的功能" class="headerlink" title="要完成的功能"></a>要完成的功能</h1><ul>
+<li>编译 jsx、es6、scss 等资源</li>
+<li>自动引入静态资源到相应 html 页面</li>
+<li>实时编译和刷新浏览器</li>
+<li>按指定模块化规范自动包装模块</li>
+<li>自动给 css 添加浏览器内核前缀</li>
+<li>按需打包合并 js、css</li>
+<li>压缩 js、css、html</li>
+<li>图片路径处理</li>
+<li>代码分割</li>
+<li>语法检查</li>
+<li>本地接口模拟服务<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1>根据前面的项目结构规划创建项目骨架,安装最基本的npm 包<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"name"</span>: <span class="string">"bvs"</span>,</div><div class="line">  <span class="attr">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="attr">"description"</span>: <span class="string">"bvs 数据管理"</span>,</div><div class="line">  <span class="attr">"main"</span>: <span class="string">"index.js"</span>,</div><div class="line">  <span class="attr">"scripts"</span>: &#123;</div><div class="line">    <span class="attr">"clean"</span>: <span class="string">"rimraf dist"</span>,</div><div class="line">    <span class="attr">"dev"</span>: <span class="string">"better-npm-run dev"</span>,</div><div class="line">    <span class="attr">"prod"</span>: <span class="string">"better-npm-run prod"</span>,</div><div class="line">    <span class="attr">"mock"</span>: <span class="string">"nodemon --exec babel-node mock/"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"betterScripts"</span>: &#123;</div><div class="line">    <span class="attr">"dev"</span>: &#123;</div><div class="line">      <span class="attr">"command"</span>: <span class="string">"webpack-dashboard -c magenta -- nodemon --exec babel-node bin/ --ignore dist --ignore src"</span>,</div><div class="line">      <span class="attr">"env"</span>: &#123;</div><div class="line">        <span class="attr">"NODE_ENV"</span>: <span class="string">"development"</span>,</div><div class="line">        <span class="attr">"DEBUG"</span>: <span class="string">"app:*"</span></div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    <span class="attr">"prod"</span>: &#123;</div><div class="line">      <span class="attr">"command"</span>: <span class="string">"npm run clean &amp;&amp; babel-node bin/build"</span>,</div><div class="line">      <span class="attr">"env"</span>: &#123;</div><div class="line">        <span class="attr">"NODE_ENV"</span>: <span class="string">"production"</span>,</div><div class="line">        <span class="attr">"DEBUG"</span>: <span class="string">"app:*"</span></div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  .....</div><div class="line">  .....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>具体参考: <a href="https://github.com/zmGitHub/turbo-admin/tree/develop" target="_blank" rel="external">turbo-admin</a>和<a href="https://github.com/zmGitHub/antd-admin" target="_blank" rel="external">ant-admin</a></p>
+<h1 id="webpack-配置"><a href="#webpack-配置" class="headerlink" title="webpack 配置"></a>webpack 配置</h1><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Webpack <span class="keyword">from</span> <span class="string">'webpack'</span>;</div><div class="line"><span class="keyword">import</span> cssnano <span class="keyword">from</span> <span class="string">'cssnano'</span>;</div><div class="line"><span class="keyword">import</span> HappyPack <span class="keyword">from</span> <span class="string">'happypack'</span>;</div><div class="line"><span class="keyword">import</span> HtmlWebpackPlugin <span class="keyword">from</span> <span class="string">'html-webpack-plugin'</span>;</div><div class="line"><span class="keyword">import</span> ExtractTextPlugin <span class="keyword">from</span> <span class="string">'extract-text-webpack-plugin'</span>;</div><div class="line"><span class="keyword">import</span> OpenBrowserWebpackPlugin <span class="keyword">from</span> <span class="string">'open-browser-webpack-plugin'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> _debug <span class="keyword">from</span> <span class="string">'debug'</span>;</div><div class="line"></div><div class="line"><span class="keyword">import</span> config <span class="keyword">from</span> <span class="string">'./config'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> debug = _debug(<span class="string">'app:webpack.config'</span>);</div><div class="line"><span class="keyword">const</span> paths = config.utils_paths;</div><div class="line"><span class="keyword">const</span> BASE_CSS_LOADER = <span class="string">'css?sourceMap&amp;-minimize'</span>;</div><div class="line"><span class="comment">// 获取当前的执行环境</span></div><div class="line"><span class="keyword">const</span> &#123;</div><div class="line">  __DEV__,</div><div class="line">&#125; = config.globals;</div><div class="line">debug(<span class="string">'👻 初始化 webpack 默认配置...'</span>);</div><div class="line"><span class="keyword">const</span> APP_ENTRY = [<span class="string">'babel-polyfill'</span>, <span class="string">'eventsource-polyfill'</span>, paths.src(<span class="string">'main.js'</span>)];</div><div class="line"><span class="keyword">const</span> webpackConfig = &#123;</div><div class="line">  name: <span class="string">'client'</span>,</div><div class="line">  target: <span class="string">'web'</span>, <span class="comment">// 打包成什么类型</span></div><div class="line">  devtool: config.devtool,</div><div class="line">  entry: &#123;</div><div class="line">    app: __DEV__ ? APP_ENTRY.concat(<span class="string">`webpack-hot-middleware/client?path=<span class="subst">$&#123;config.public_path&#125;</span>__webpack_hmr`</span>) : APP_ENTRY,</div><div class="line">    vendor: config.vendor, <span class="comment">// 第三方包</span></div><div class="line">  &#125;,</div><div class="line">  output: &#123; <span class="comment">// 输出配置</span></div><div class="line">    filename: __DEV__ ? <span class="string">'[name].js?[hash]'</span> : <span class="string">'[name].[chunkhash].js'</span>,</div><div class="line">    chunkFilename: __DEV__ ? <span class="string">'[name].[id].js?[hash]'</span> : <span class="string">'[name].[id].[chunkhash].js'</span>,</div><div class="line">    path: paths.dist(),</div><div class="line">    publicPath: config.public_path,</div><div class="line">  &#125;,</div><div class="line">  resolve: &#123;</div><div class="line">    root: paths.src(), <span class="comment">// 根目录: 这样可以在内部使用时 是从 src 目录查找 不需要 ../../../ 这样的写法</span></div><div class="line">    modulesDirectories: [<span class="string">'node_modules'</span>, paths.base(<span class="string">'node_modules'</span>)],</div><div class="line">    extensions: [<span class="string">''</span>, <span class="string">'.js'</span>, <span class="string">'.jsx'</span>, <span class="string">'.json'</span>],</div><div class="line">    <span class="comment">// 导入时可以不用加后缀名, 但是一定要加个空字符因为覆盖了默认的导入行为, 比如导入 a.txt 文件就报错了</span></div><div class="line">    alias: &#123;</div><div class="line">      styles: paths.src(<span class="string">'styles'</span>),</div><div class="line">    &#125;,</div><div class="line">  &#125;,</div><div class="line">  .....</div></pre></td></tr></table></figure>
+<p>上面配置好以后执行:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm run dev</div></pre></td></tr></table></figure></p>
+<p>之后你就可以看到:<br><img src="/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/dashboard.png" alt="dashboard.png" title=""><br>项目中编译 jsx 的时候没有启用.babelrc 文件这个文件只有启动node端的时候才会用到:<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "presets": [</div><div class="line">    "es2015",</div><div class="line">    "stage-0"</div><div class="line">  ],</div><div class="line">  "plugins": ["add-module-exports", "transform-runtime"],</div><div class="line">  "sourceMaps": true, // 方便测试</div><div class="line">  "retainLines": true</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>服务端代码和热部署功能<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Koa <span class="keyword">from</span> <span class="string">'koa'</span>;</div><div class="line">....</div><div class="line"></div><div class="line">const debug = _debug(<span class="string">'app:server'</span>);</div><div class="line"><span class="keyword">const</span> paths = config.utils_paths; <span class="comment">// 文件目录 utility</span></div><div class="line"><span class="keyword">const</span> port = config.server_port; <span class="comment">// 服务器端口</span></div><div class="line"><span class="keyword">const</span> host = config.server_host; <span class="comment">// 服务 ip</span></div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa(); <span class="comment">// 创建 koa 的实例</span></div><div class="line"></div><div class="line"><span class="comment">// 是否启用 API 服务器</span></div><div class="line"><span class="keyword">if</span> (config.proxy &amp;&amp; config.proxy.enabled) &#123;</div><div class="line">  app.use(convert(proxy(config.proxy.options)));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 让 url 永远指向 index.html 方便 react-outer</span></div><div class="line">app.use(convert(historyApiFallback(&#123;</div><div class="line">  verbose: <span class="literal">false</span>, <span class="comment">// 取消日志消息</span></div><div class="line">&#125;)));</div><div class="line"></div><div class="line"><span class="comment">// 区分生产和开发</span></div><div class="line"><span class="keyword">if</span> (config.env === <span class="string">'development'</span>) &#123;</div><div class="line">  debug(<span class="string">'👽 开发模式加载完成'</span>);</div><div class="line">  <span class="keyword">const</span> &#123;</div><div class="line">    publicPath,</div><div class="line">  &#125; = webpackConfig.output;</div><div class="line">  <span class="keyword">const</span> complie = webpack(webpackConfig);</div><div class="line">  complie.apply(<span class="keyword">new</span> DashboardPlugin());</div><div class="line">  app.use(convert(webpackDevMiddleware(complie, &#123;</div><div class="line">    publicPath,</div><div class="line">    contentBase: paths.src(),</div><div class="line">    <span class="comment">// 服务一起动开始 webpack 编译</span></div><div class="line">    lazy: <span class="literal">false</span>,</div><div class="line">    hot: <span class="literal">true</span>,</div><div class="line">    quiet: <span class="literal">true</span>, <span class="comment">// 是否在 console 里面显示信息</span></div><div class="line">    noInfo: <span class="literal">true</span>, <span class="comment">// 是否在命令行中显示错误</span></div><div class="line">    stats: &#123;</div><div class="line">      colors: <span class="literal">true</span>,</div><div class="line">    &#125;,</div><div class="line">    historyApiFallback: <span class="literal">true</span>,</div><div class="line">  &#125;)));</div><div class="line">  <span class="comment">// 启用热部署插件</span></div><div class="line">  app.use(convert(webpackHotMiddleware(complie)));</div><div class="line">  <span class="comment">// 静态文件请求</span></div><div class="line">  app.use(convert(server(paths.src(<span class="string">'static'</span>))));</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  debug(<span class="string">'😻 打包完成, 模拟线上环境'</span>);</div><div class="line">  app.use(convert(server(paths.dist())));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>还需在代码里添加如下代码监听模块更新<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 开发环境配置: 生产下应该去掉</span></div><div class="line"><span class="keyword">if</span> (__DEV__ &amp;&amp; <span class="built_in">module</span>.hot) &#123;</div><div class="line">  <span class="keyword">const</span> renderApp = render;</div><div class="line">  <span class="comment">// 调用 readbox 显示开发中的错误</span></div><div class="line">  <span class="keyword">const</span> renderError = (error) =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> RedBox = <span class="built_in">require</span>(<span class="string">'redbox-react'</span>).default;</div><div class="line">    ReactDOM.render(<span class="xml"><span class="tag">&lt;<span class="name">RedBox</span> <span class="attr">error</span>=<span class="string">&#123;error&#125;</span> /&gt;</span>, MOUNT_NODE);</span></div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  render = () =&gt; &#123;</div><div class="line">    try &#123;</div><div class="line">      renderApp();</div><div class="line">    &#125; catch (error) &#123;</div><div class="line">      renderError(error);</div><div class="line">    &#125;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  // 建立热部署</div><div class="line">  module.hot.accept('./views/index', () =&gt; &#123;</div><div class="line">    setImmediate(() =&gt; &#123;</div><div class="line">      // 先卸载之前的应用</div><div class="line">      ReactDOM.unmountComponentAtNode(MOUNT_NODE);</div><div class="line">      render();</div><div class="line">    &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 页面渲染</div><div class="line">render();</div></pre></td></tr></table></figure></p>
+<h1 id="scss图片等静态文件处理"><a href="#scss图片等静态文件处理" class="headerlink" title="scss图片等静态文件处理"></a>scss图片等静态文件处理</h1><p>开发模式下基本都是在style 标签中所以项目启动后会白屏一下, 后面打包的时候这些问题将会解决掉:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// sassloader 配置</span></div><div class="line"> sassLoader: &#123;</div><div class="line">   includePaths: paths.src(<span class="string">'styles'</span>),</div><div class="line"> &#125;,</div><div class="line"> <span class="comment">// postcss 配置</span></div><div class="line"> postcss: [</div><div class="line">   cssnano(&#123;</div><div class="line">     autoprefixer: &#123;</div><div class="line">       add: <span class="literal">true</span>,</div><div class="line">       remove: <span class="literal">true</span>,</div><div class="line">       browsers: [<span class="string">'last 2 versions'</span>, <span class="string">'Firefox ESR'</span>, <span class="string">'&gt; 1%'</span>, <span class="string">'ie &gt;= 9'</span>, <span class="string">'iOS &gt;= 8'</span>, <span class="string">'Android &gt;= 4'</span>],</div><div class="line">     &#125;,</div><div class="line">     discardComments: &#123;</div><div class="line">       removeAll: <span class="literal">true</span>,</div><div class="line">     &#125;,</div><div class="line">     discardUnused: <span class="literal">false</span>,</div><div class="line">     mergeIdents: <span class="literal">false</span>,</div><div class="line">     reduceIdents: <span class="literal">false</span>,</div><div class="line">     safe: <span class="literal">true</span>,</div><div class="line">     sourcemap: <span class="literal">true</span>,</div><div class="line">   &#125;),</div><div class="line"> ],</div></pre></td></tr></table></figure></p>
+<p>使用ExtractTextPlugin插件单独打包 css 文件:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 打包配置 将 css 从 style 标签里面抽到 app.css 里面</span></div><div class="line"><span class="comment">// 因为开发环境下没有启用 ExtractTextPlugin 所以样式都是在 style 标签里面</span></div><div class="line"><span class="keyword">if</span> (!__DEV__) &#123;</div><div class="line">  debug(<span class="string">'启用 ExtractTextPlugin...'</span>);</div><div class="line">  webpackConfig.module.loaders.filter(loader =&gt;</div><div class="line">    loader.loaders &amp;&amp; loader.loaders.find(name =&gt; <span class="regexp">/css/</span>.test(name.split(<span class="string">'?'</span>)[<span class="number">0</span>]))</div><div class="line">  ).forEach((loader) =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> cssLoader = loader;</div><div class="line">    <span class="keyword">const</span> first = cssLoader.loaders[<span class="number">0</span>];</div><div class="line">    <span class="keyword">const</span> rest = cssLoader.loaders.slice(<span class="number">1</span>);</div><div class="line">    cssLoader.loader = ExtractTextPlugin.extract(first, rest.join(<span class="string">'!'</span>));</div><div class="line">    <span class="keyword">delete</span> cssLoader.loaders;</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  webpackConfig.plugins.push(</div><div class="line">    <span class="keyword">new</span> ExtractTextPlugin(<span class="string">'[name].[contenthash].css'</span>, &#123;</div><div class="line">      allChunks: <span class="literal">true</span>,</div><div class="line">    &#125;));</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>#本地接口模拟服务<br>前后端分离后, 前端的工作不受后台的影响, 所以我们的工作是并行的, 前端的接口数据格式由我们定, 我这里的处理方式是, koa 里面开启 proxy, 只有发现是 /api/** 打头的就代理的到 mock 端:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Koa <span class="keyword">from</span> <span class="string">'koa'</span>;</div><div class="line"><span class="keyword">import</span> Mock <span class="keyword">from</span> <span class="string">'mockjs'</span>;</div><div class="line"><span class="keyword">import</span> pathToRegexp <span class="keyword">from</span> <span class="string">'path-to-regexp'</span>;</div><div class="line"><span class="keyword">import</span> _debug <span class="keyword">from</span> <span class="string">'debug'</span>;</div><div class="line"><span class="keyword">import</span> APIS <span class="keyword">from</span> <span class="string">'./api'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> info = _debug(<span class="string">'app:mock'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> app = <span class="keyword">new</span> Koa();</div><div class="line"></div><div class="line">app.use(<span class="keyword">async</span>(ctx, next) =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> reqAPI = ctx.path;</div><div class="line">  <span class="keyword">let</span> mockConfig = <span class="literal">null</span>;</div><div class="line">  APIS.forEach((api) =&gt; &#123;</div><div class="line">    <span class="keyword">const</span> regexp = api.URL.includes(<span class="string">':'</span>) &amp;&amp; pathToRegexp(api.URL);</div><div class="line">    <span class="keyword">if</span> (regexp &amp;&amp; regexp.test(reqAPI)) &#123;</div><div class="line">      mockConfig = api[ctx.method];</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (api.URL === reqAPI) &#123;</div><div class="line">      mockConfig = api[ctx.method];</div><div class="line">      <span class="keyword">return</span>;</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">  <span class="keyword">const</span> responseData = Mock.mock(mockConfig || &#123;</div><div class="line">    success: <span class="literal">false</span>,</div><div class="line">    error: <span class="string">`没有配置<span class="subst">$&#123;reqAPI&#125;</span>, 请添加`</span>,</div><div class="line">    data: <span class="literal">null</span>,</div><div class="line">  &#125;);</div><div class="line">  ctx.body = responseData;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`接口地址: http://localhost:9999<span class="subst">$&#123;reqAPI&#125;</span>`</span>);</div><div class="line">  <span class="keyword">await</span> next();</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.listen(<span class="number">9999</span>, (err) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (err) &#123;</div><div class="line">    info(err);</div><div class="line">  &#125;</div><div class="line">  info(<span class="string">'📢 mockser 启动成功, 端口: 9999'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>　　这里的核心模块是path-to-regexp和 mockJS 所以如果想配置接口其实也是非常的容易只需要在 api.js这个文件里面添加 API 路径和返回的数据格式就可以了:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> API = [&#123;</div><div class="line">  URL: <span class="string">'/api/user/:id(\\d+)'</span>, <span class="comment">// 请注意如果要指明 id 为数字请添加(\\d+)</span></div><div class="line">  GET: &#123;</div><div class="line">    <span class="string">'success|1'</span>: [<span class="literal">true</span>, <span class="literal">false</span>],</div><div class="line">    result: &#123;</div><div class="line">      total: <span class="number">10</span>,</div><div class="line">      <span class="string">'data|100'</span>: [&#123;</div><div class="line">        username: <span class="string">'@CNAME'</span>,</div><div class="line">        <span class="string">'userId|+1'</span>: <span class="number">1</span>,</div><div class="line">        clientName: <span class="string">'@CTITLE(2, 5)'</span>,</div><div class="line">        <span class="string">'pointScore|1-99'</span>: <span class="number">0</span>,</div><div class="line">        <span class="string">'freezePointScore|1-99'</span>: <span class="number">0</span>,</div><div class="line">        registerDate: <span class="string">'@DATE(yyyy-MM-dd)'</span>,</div><div class="line">        lastLogin: <span class="string">'@TIME(a HH:mm:ss)'</span>,</div><div class="line">        <span class="string">'locked|1'</span>: [<span class="literal">true</span>, <span class="literal">false</span>],</div><div class="line">      &#125;],</div><div class="line">    &#125;,</div><div class="line">    error: <span class="string">''</span>,</div><div class="line">  &#125;,</div><div class="line">  ....</div></pre></td></tr></table></figure></p>
+<p>最终打包发布不受任何的影响, 是不是非常的方便呢</p>
+<h1 id="webpack问题和优化"><a href="#webpack问题和优化" class="headerlink" title="webpack问题和优化"></a>webpack问题和优化</h1><p>可能眼尖的小伙伴发现了我们项目的编译时间有点长(启动的时候), 打包时也是非常的长20s 左右, 我尝试过的方法是:</p>
+<ul>
+<li>将第三方的包全局引入</li>
+<li>使用 happypack</li>
+<li>使用 dll 方案</li>
+<li>使用 antd 的时候添加babel-plugin-import, 切记不要再引入antd.less了 这样会重复引入<blockquote>
+<p>这里说个题外话, ie8和 ie9对于 单个 css 文件的大小不能超过288k, 小伙伴们注意了! 要不你会发现你的样式一半有一半没有, 然后你就会开始怀疑各种人生, 吼吼…..</p>
+</blockquote>
+</li>
+</ul>
+<p>happypack 基本是解决了编译单线程的问题,所以在配置的时候注意下参数:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> HappyPack(&#123;</div><div class="line">  id: <span class="string">'babel'</span>,</div><div class="line">  theads: <span class="number">4</span>, <span class="comment">// 官方推荐,测试发现这个数值是最快的</span></div><div class="line">  loaders: [&#123;</div><div class="line">    path: paths.nodeModules(<span class="string">'babel-loader/lib/index.js'</span>),</div><div class="line">    query: <span class="string">`?<span class="subst">$&#123;JSON.stringify(config.babelConfig)&#125;</span>`</span>,</div><div class="line">  &#125;],</div><div class="line">&#125;),</div></pre></td></tr></table></figure></p>
+<p>对于 dll 的方案我不是很推荐, 无非就是生成一些映射,但是感觉没有什么用啊, 速度什么的没有提上来:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 第三方依赖库</span></div><div class="line"><span class="keyword">const</span> VENDORS = [</div><div class="line">  <span class="string">'antd'</span>,</div><div class="line">  <span class="string">'echarts'</span>,</div><div class="line">  <span class="string">'superagent'</span>,</div><div class="line">  <span class="string">'babel-polyfill'</span>,</div><div class="line">  <span class="string">'eventsource-polyfill'</span>,</div><div class="line">  <span class="string">'element-resize-event'</span>,</div><div class="line">  <span class="string">'react'</span>,</div><div class="line">  <span class="string">'react-dom'</span>,</div><div class="line">  <span class="string">'react-redux'</span>,</div><div class="line">  <span class="string">'react-router'</span>,</div><div class="line">  <span class="string">'redux'</span>,</div><div class="line">  <span class="string">'redux-thunk'</span>,</div><div class="line">];</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  context: base(),</div><div class="line">  entry: &#123;</div><div class="line">    vendor: VENDORS,</div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    path: base(<span class="string">'dll'</span>),</div><div class="line">    filename: <span class="string">'[name].dll.js'</span>,</div><div class="line">    library: <span class="string">'[name]'</span>,</div><div class="line">  &#125;,</div><div class="line">  plugins: [</div><div class="line">    <span class="keyword">new</span> webpack.DllPlugin(&#123;</div><div class="line">      path: base(<span class="string">'manifest.json'</span>),</div><div class="line">      name: <span class="string">'[name]'</span>,</div><div class="line">      context: base(),</div><div class="line">    &#125;),</div><div class="line">  ],</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>#结语</p>
+<p>　　开发这套体系大概花费了我一个多星期, 中间不少的修修补补, 很多问题都是在项目实际开发中发现的, 然后遇到问题解决, 记录下来, 方便下次看, 这个体系我会继续维护下去,<a href="https://github.com/zmGitHub/turbo-admin/tree/develop" target="_blank" rel="external">turbo-admin</a>　这个是我自己写的一些样式组件,<a href="https://github.com/zmGitHub/antd-admin" target="_blank" rel="external">ant-admin</a> 这个用的是 antd 的,目前项目基本在跑这个, 欢迎大家 star!</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react/" rel="tag"># react</a>
+          
+            <a href="/tags/webpack/" rel="tag"># webpack</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/13/eslint-airbnb-初始化/" rel="next" title="eslint airbnb 初始化">
+                <i class="fa fa-chevron-left"></i> eslint airbnb 初始化
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/08/JavaScript奇淫技巧/" rel="prev" title="JavaScript奇淫技巧">
+                JavaScript奇淫技巧 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/"
+           data-title="使用 webpack + react + redux + es6 搭建团队组件化前端项目" data-url="https://zmGitHub.github.io/2016/07/03/使用-webpack-react-redux-es6-搭建团队组件化前端项目/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="钟 明" />
+          <p class="site-author-name" itemprop="name">钟 明</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目结构规划"><span class="nav-number">1.</span> <span class="nav-text">项目结构规划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#要完成的功能"><span class="nav-number">2.</span> <span class="nav-text">要完成的功能</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">3.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack-配置"><span class="nav-number">4.</span> <span class="nav-text">webpack 配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scss图片等静态文件处理"><span class="nav-number">5.</span> <span class="nav-text">scss图片等静态文件处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#webpack问题和优化"><span class="nav-number">6.</span> <span class="nav-text">webpack问题和优化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">钟 明</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"zhongming"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js?v=5.1.0"></script>
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("t9c0TlB1XMimGoeLWThMmlmV-gzGzoHsz", "aoldInwmjlSpGVOEpHHc5UQ0");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
