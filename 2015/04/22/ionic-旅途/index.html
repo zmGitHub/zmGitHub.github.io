@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JavaScript," />
+  <meta name="keywords" content="JavaScript,ionic," />
 
 
 
@@ -102,16 +102,19 @@
 
 
 
-<meta name="description" content="1.数字处理1234567891011121314151617181920// 向下取整let num1 = ~~1.2; // 1let num2 = 3.6&amp;gt;&amp;gt;0; // 3let num3 = 10.67345|0; // 10let num4 = 13.66454^0; // 13// 字符串转数字let str = +&apos;1231&apos;; //1231 但是1231dsf 这样的不">
+<meta name="description" content="在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付
+　　在ionic开发中遇到不少的坑，绝大部分解决了但是在我们的app中如果跳转到第三方网站上时，那么问题来了．此时我们的app是不能监听到你在其它网站上的事件的，所以当你想要回退到我们自己app上时,请紧握你的蛋,小编在开发这个模块时就遇到了很大的麻烦想尽各种办法还是不能解决,下面我就跟大家讨论下我在ionic中遇到的问">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript奇淫技巧">
-<meta property="og:url" content="https://zmGitHub.github.io/2016/10/08/JavaScript奇淫技巧/index.html">
+<meta property="og:title" content="ionic 旅途">
+<meta property="og:url" content="https://zmGitHub.github.io/2015/04/22/ionic-旅途/index.html">
 <meta property="og:site_name" content="这样生活 很美...">
-<meta property="og:description" content="1.数字处理1234567891011121314151617181920// 向下取整let num1 = ~~1.2; // 1let num2 = 3.6&amp;gt;&amp;gt;0; // 3let num3 = 10.67345|0; // 10let num4 = 13.66454^0; // 13// 字符串转数字let str = +&apos;1231&apos;; //1231 但是1231dsf 这样的不">
-<meta property="og:updated_time" content="2016-10-08T03:26:12.000Z">
+<meta property="og:description" content="在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付
+　　在ionic开发中遇到不少的坑，绝大部分解决了但是在我们的app中如果跳转到第三方网站上时，那么问题来了．此时我们的app是不能监听到你在其它网站上的事件的，所以当你想要回退到我们自己app上时,请紧握你的蛋,小编在开发这个模块时就遇到了很大的麻烦想尽各种办法还是不能解决,下面我就跟大家讨论下我在ionic中遇到的问">
+<meta property="og:updated_time" content="2017-03-12T14:53:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript奇淫技巧">
-<meta name="twitter:description" content="1.数字处理1234567891011121314151617181920// 向下取整let num1 = ~~1.2; // 1let num2 = 3.6&amp;gt;&amp;gt;0; // 3let num3 = 10.67345|0; // 10let num4 = 13.66454^0; // 13// 字符串转数字let str = +&apos;1231&apos;; //1231 但是1231dsf 这样的不">
+<meta name="twitter:title" content="ionic 旅途">
+<meta name="twitter:description" content="在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付
+　　在ionic开发中遇到不少的坑，绝大部分解决了但是在我们的app中如果跳转到第三方网站上时，那么问题来了．此时我们的app是不能监听到你在其它网站上的事件的，所以当你想要回退到我们自己app上时,请紧握你的蛋,小编在开发这个模块时就遇到了很大的麻烦想尽各种办法还是不能解决,下面我就跟大家讨论下我在ionic中遇到的问">
 
 
 
@@ -139,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="https://zmGitHub.github.io/2016/10/08/JavaScript奇淫技巧/"/>
+  <link rel="canonical" href="https://zmGitHub.github.io/2015/04/22/ionic-旅途/"/>
 
 
 
 
 
-  <title> JavaScript奇淫技巧 | 这样生活 很美... </title>
+  <title> ionic 旅途 | 这样生活 很美... </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -278,7 +281,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/10/08/JavaScript奇淫技巧/">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2015/04/22/ionic-旅途/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="钟 明">
@@ -302,7 +305,7 @@
             
             
               
-                JavaScript奇淫技巧
+                ionic 旅途
               
             
           </h1>
@@ -317,8 +320,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-10-08T09:47:43+08:00">
-                2016-10-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-04-22T21:17:40+08:00">
+                2015-04-22
               </time>
             
 
@@ -328,28 +331,6 @@
           </span>
 
           
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技巧积累/" itemprop="url" rel="index">
-                    <span itemprop="name">技巧积累</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
 
           
             
@@ -358,8 +339,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2016/10/08/JavaScript奇淫技巧/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/08/JavaScript奇淫技巧/" itemprop="commentCount"></span>
+                <a href="/2015/04/22/ionic-旅途/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/22/ionic-旅途/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -369,7 +350,7 @@
 
           
           
-             <span id="/2016/10/08/JavaScript奇淫技巧/" class="leancloud_visitors" data-flag-title="JavaScript奇淫技巧">
+             <span id="/2015/04/22/ionic-旅途/" class="leancloud_visitors" data-flag-title="ionic 旅途">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -396,13 +377,25 @@
       
 
       
-        <h2 id="1-数字处理"><a href="#1-数字处理" class="headerlink" title="1.数字处理"></a>1.数字处理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 向下取整</span></div><div class="line"><span class="keyword">let</span> num1 = ~~<span class="number">1.2</span>; <span class="comment">// 1</span></div><div class="line"><span class="keyword">let</span> num2 = <span class="number">3.6</span>&gt;&gt;<span class="number">0</span>; <span class="comment">// 3</span></div><div class="line"><span class="keyword">let</span> num3 = <span class="number">10.67345</span>|<span class="number">0</span>; <span class="comment">// 10</span></div><div class="line"><span class="keyword">let</span> num4 = <span class="number">13.66454</span>^<span class="number">0</span>; <span class="comment">// 13</span></div><div class="line"></div><div class="line"><span class="comment">// 字符串转数字</span></div><div class="line"><span class="keyword">let</span> str = +<span class="string">'1231'</span>; <span class="comment">//1231 但是1231dsf 这样的不行 会是 NaN</span></div><div class="line"></div><div class="line"><span class="comment">// 验证是否是数字:</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNumber</span>(<span class="params">n</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> !<span class="built_in">isNaN</span>(<span class="built_in">parseFloat</span>(n)) &amp;&amp; <span class="built_in">isFinite</span>(n);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 浮点计算的问题</span></div><div class="line"><span class="number">0.1</span> + <span class="number">0.2</span> === <span class="number">0.3</span> <span class="comment">// is false</span></div><div class="line"><span class="number">9007199254740992</span> + <span class="number">1</span> <span class="comment">// is equal to 9007199254740992</span></div><div class="line"><span class="number">9007199254740992</span> + <span class="number">2</span> <span class="comment">// is equal to 9007199254740994</span></div><div class="line"><span class="comment">/* 因为0.1+0.2等于0.30000000000000004。JavaScript的数字都遵循IEEE 754标准构建，在内部都是64位浮点小数表示</span></div><div class="line">可以通过使用toFixed()和toPrecision()来解决这个问题。*/</div></pre></td></tr></table></figure>
-<h2 id="2-日期转数字"><a href="#2-日期转数字" class="headerlink" title="2.日期转数字"></a>2.日期转数字</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> num = + <span class="keyword">new</span> <span class="built_in">Date</span>();</div></pre></td></tr></table></figure>
-<h2 id="3-随机码"><a href="#3-随机码" class="headerlink" title="3.随机码"></a>3.随机码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Math</span>.random().toString(<span class="number">16</span>).substring(<span class="number">2</span>) <span class="comment">// 14 位</span></div><div class="line"><span class="built_in">Math</span>.random().toString(<span class="number">36</span>).substring(<span class="number">2</span>); <span class="comment">// 11 位</span></div><div class="line"></div><div class="line"><span class="comment">// 获取数组的随机元素</span></div><div class="line"><span class="keyword">let</span> items = [<span class="number">12</span>, <span class="number">548</span> , <span class="string">'a'</span> , <span class="number">2</span> , <span class="number">5478</span> , <span class="string">'foo'</span> , <span class="number">8852</span>, , <span class="string">'Doe'</span> , <span class="number">2145</span> , <span class="number">119</span>];</div><div class="line">items[<span class="built_in">Math</span>.random()*items.length|<span class="number">0</span>] <span class="comment">// items[Math.floor(Math.random() * items.length)]</span></div><div class="line"></div><div class="line"><span class="comment">// 获取指定范围内的随机数</span></div><div class="line">(<span class="built_in">Math</span>.random()*(max-min+<span class="number">1</span>))|<span class="number">0</span> + min; <span class="comment">// Math.floor(Math.random() * (max - min + 1)) + min;</span></div></pre></td></tr></table></figure>
-<h2 id="4-条件判断"><a href="#4-条件判断" class="headerlink" title="4.条件判断"></a>4.条件判断</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> a = b &amp;&amp; <span class="number">1</span>;</div><div class="line"><span class="comment">//相当于:</span></div><div class="line"><span class="keyword">if</span> (b) &#123;</div><div class="line">  a = <span class="number">1</span>;</div><div class="line">&#125;<span class="keyword">else</span> &#123;</div><div class="line">  a = b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> a = b || <span class="number">1</span>;</div><div class="line"><span class="comment">//相当于</span></div><div class="line"><span class="keyword">if</span> (b) &#123;</div><div class="line">  a = b;</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  a = <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">underfined、<span class="literal">null</span>、<span class="number">0</span>、<span class="literal">false</span>、<span class="literal">NaN</span>、空字符串的逻辑结果均为<span class="literal">false</span></div></pre></td></tr></table></figure>
-<h2 id="5-判断-IE"><a href="#5-判断-IE" class="headerlink" title="5.判断 IE"></a>5.判断 IE</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ie = <span class="comment">/*@cc_on !@*/</span><span class="literal">false</span>;</div><div class="line"><span class="keyword">let</span> ie8 = <span class="built_in">document</span>.documentMode==<span class="number">8</span> &amp;&amp; !!<span class="built_in">window</span>.ActiveXObject;</div></pre></td></tr></table></figure>
-<h2 id="数组处理"><a href="#数组处理" class="headerlink" title="数组处理"></a>数组处理</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> arr = [<span class="number">12</span> , <span class="number">222</span> , <span class="number">1000</span> ];</div><div class="line"></div><div class="line">验证是否是数组:</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span>(<span class="params">obj</span>)</span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(obj) === <span class="string">'[object Array]'</span> ;</div><div class="line">&#125;</div><div class="line"></div><div class="line">求数组的最大值和最小值</div><div class="line"><span class="built_in">Math</span>.max.apply(<span class="literal">null</span>, [<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">8</span>]) <span class="comment">// 8  IE8 会出错 (Math.min.apply(null, [1,3,5,8]))</span></div><div class="line">或者</div><div class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>,<span class="number">5</span>,<span class="number">79</span>,<span class="number">4</span>];</div><div class="line"><span class="built_in">Math</span>.max(...arr); <span class="comment">// 79 Math.min(...arr);</span></div><div class="line"></div><div class="line">清空数组</div><div class="line">arr.length = <span class="number">0</span>;</div></pre></td></tr></table></figure>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="http://www.jstips.co/" target="_blank" rel="external">JSTips</a></p>
+        <h2 id="在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付"><a href="#在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付" class="headerlink" title="在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付"></a>在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付</h2><hr>
+<p>　　在ionic开发中遇到不少的坑，绝大部分解决了但是在我们的app中如果跳转到第三方网站上时，那么问题来了．此时我们的app是不能监听到你在其它网站上的事件的，所以当你想要回退到我们自己app上时,请紧握你的蛋,小编在开发这个模块时就遇到了很大的麻烦想尽各种办法还是不能解决,下面我就跟大家讨论下我在ionic中遇到的问题:</p>
+<hr>
+<p> *在开发一款机票砍价的ionic app中用户可以选择去携程订票,这个时候问题来了因为我监听了android的back的事件,而且这个事件是cordovaJS调用了原生的事件来进行处理的.代码如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ionicPlatform.registerBackButtonAction(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">  e.preventDefault();</div><div class="line">  ......</div><div class="line">  ......</div><div class="line">  return <span class="literal">false</span>;</div><div class="line">&#125;, <span class="number">101</span>);</div></pre></td></tr></table></figure></p>
+<p>　　但是当我跳转到携程的时候,这个监听函数是不会起作用的,所以我就凌乱……..,当用户要返回到我的App时要不停的按手机的返回键,这个时候就相对于浏览器的后退一样了,这个时候就会出现一个不好的表现了,回退的功能会把你浏览过的route全部重新访问一边之后才会退出我们的应用,如果没有使用上面的registerBackButtonAction的话,这是在android上,至少是可以回退,但是在ios上呢?这个就会很逆天了,会被别人骂的要死……<br> *另一个问题是:用户支付的时候,我们为了方便使用了网页版的支付方式,同样的问题同样的味道,虽然可以自己写cordva的插件.但是毕竟这个还是比较费时间的,如果小伙伴需要这样的功能我推荐大家用这个: <a href="https://github.com/TongChia/cordova-plugin-pingpp" target="_blank" rel="external">pingpp</a></p>
+<p>最后的最后实在是没办法了……<br>想到了用iframe现在才想到,唉~</p>
+<p>不瞎扯分享下我的经验:</p>
+<p>首先使用$ionicModal创建一个弹出层可以覆盖整个页面,具体就看大家的业务需求了<br>在modal中加入如下的代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;ion-modal-view&gt;</div><div class="line">    &lt;ion-header-bar align-title="center" class="bar-positive"&gt;</div><div class="line">        &lt;div class="buttons"&gt;</div><div class="line">            &lt;button ng-click="vm.cancelPay()" class="button button-clear button-icon icon ion-ios-arrow-back"&gt;&lt;/button&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;h1 class="title"&gt;支付宝&lt;/h1&gt;</div><div class="line">    &lt;/ion-header-bar&gt;</div><div class="line">    &lt;ion-content scroll="true" class="has-header no-padding"&gt;</div><div class="line">        &lt;iframe data-tap-disabled="true" ng-src="&#123;&#123;vm.paySrc&#125;&#125;"&gt;&lt;/iframe&gt;</div><div class="line">    &lt;/ion-content&gt;</div><div class="line">&lt;/ion-modal-view&gt;</div></pre></td></tr></table></figure>
+<p>注意下我们需要配置ion-content的<strong>scroll=”true” class=”has-header no-padding”</strong> 和iframe的<strong>data-tap-disabled=”true”</strong><br>这里就是可以解决用户不能操作iframe里面的东西</p>
+<p>　　其中如果想要动态的改变iframe的src一定要用<strong>ng-src=”“</strong>但是这里就需要注意了,如果你的<strong>vm.paySrc</strong>是普通的链接是不能访问的,因为Angularjs 中防止了用户注入URL,<strong>所以解决办法是使用 $sce.trustAsResourceUrl(URL)</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vm.paySrc =  $sce.trustAsResourceUrl(<span class="string">'http://www.baidu.com/'</span>); <span class="comment">//URL 为全链接（$sce.trustAsResourceUrl("http://" + url)）</span></div></pre></td></tr></table></figure>
+<p>最后就是添加css了:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.scroll-content</span> &gt; <span class="selector-class">.scroll</span> &#123;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.scroll-content</span> &gt; <span class="selector-class">.scroll</span> &gt; <span class="selector-tag">iframe</span> &#123;</div><div class="line">    <span class="attribute">min-width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">min-height</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好了基本上就是这样了其它的细节大家去优化吧!这里是参考的资料:</p>
+<p><a href="https://github.com/driftyco/ionic/issues/1151" target="_blank" rel="external">https://github.com/driftyco/ionic/issues/1151</a></p>
+<p><a href="http://forum.ionicframework.com/t/fill-content-container/605" target="_blank" rel="external">http://forum.ionicframework.com/t/fill-content-container/605</a></p>
+<p><a href="http://www.erpchn.com/diannao/43242.html" target="_blank" rel="external">http://www.erpchn.com/diannao/43242.html</a></p>
+<p><a href="http://www.thinksaas.cn/group/topic/350702/" target="_blank" rel="external">http://www.thinksaas.cn/group/topic/350702/</a></p>
 
       
     </div>
@@ -428,6 +421,8 @@
           
             <a href="/tags/JavaScript/" rel="tag"># JavaScript</a>
           
+            <a href="/tags/ionic/" rel="tag"># ionic</a>
+          
         </div>
       
 
@@ -435,8 +430,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/16/hexo-setup/" rel="next" title="使用 hexo 和 GitHubPage 搭建个人博客">
-                <i class="fa fa-chevron-left"></i> 使用 hexo 和 GitHubPage 搭建个人博客
+              <a href="/2015/03/27/ubuntu-14-04-搭建ionic的开发环境/" rel="next" title="ubuntu 14.04 搭建ionic的开发环境">
+                <i class="fa fa-chevron-left"></i> ubuntu 14.04 搭建ionic的开发环境
               </a>
             
           </div>
@@ -445,8 +440,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/12/29/reactNative环境搭建/" rel="prev" title="reactNative Android 环境搭建">
-                reactNative Android 环境搭建 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/16/hexo-setup/" rel="prev" title="使用 hexo 和 GitHubPage 搭建个人博客">
+                使用 hexo 和 GitHubPage 搭建个人博客 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -473,8 +468,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/08/JavaScript奇淫技巧/"
-           data-title="JavaScript奇淫技巧" data-url="https://zmGitHub.github.io/2016/10/08/JavaScript奇淫技巧/">
+      <div class="ds-thread" data-thread-key="2015/04/22/ionic-旅途/"
+           data-title="ionic 旅途" data-url="https://zmGitHub.github.io/2015/04/22/ionic-旅途/">
       </div>
     
   </div>
@@ -574,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-数字处理"><span class="nav-number">1.</span> <span class="nav-text">1.数字处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-日期转数字"><span class="nav-number">2.</span> <span class="nav-text">2.日期转数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-随机码"><span class="nav-number">3.</span> <span class="nav-text">3.随机码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-条件判断"><span class="nav-number">4.</span> <span class="nav-text">4.条件判断</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-判断-IE"><span class="nav-number">5.</span> <span class="nav-text">5.判断 IE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组处理"><span class="nav-number">6.</span> <span class="nav-text">数组处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">7.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付"><span class="nav-number">1.</span> <span class="nav-text">在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付</span></a></li></ol></div>
             
 
           </div>

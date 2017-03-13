@@ -276,6 +276,160 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2017/05/12/ionic和cordova升级后不能跨域/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="钟 明">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="这样生活 很美...">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/12/ionic和cordova升级后不能跨域/" itemprop="url">
+                  ionic和cordova升级后不能跨域
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-12T20:15:55+08:00">
+                2017-05-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/05/12/ionic和cordova升级后不能跨域/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/05/12/ionic和cordova升级后不能跨域/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2017/05/12/ionic和cordova升级后不能跨域/" class="leancloud_visitors" data-flag-title="ionic和cordova升级后不能跨域">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天升级了ionic和cordova后发现以前能跨域的请求现在都不能了，升级的方法如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">bower update <span class="comment">###更新ionic的css,js等</span></div><div class="line"></div><div class="line">sudo npm update -g cordova <span class="comment">###更新cordova　到5.1.1 我的ionic 是1.5.5</span></div><div class="line"></div><div class="line"></div><div class="line">cordova platform update android <span class="comment">###更新cordova.js</span></div><div class="line"></div><div class="line">bower clean cache　<span class="comment">###清理下缓存</span></div></pre></td></tr></table></figure>
+<p>执行完上面的代码，在浏览器里面是没问题的，但是当我去build的时候就不得了，直接报错说我没有安装android sdk api 22　我更想api的时候又遇到坑了，因为我们大天朝我一直更新不了,在网上一番搜索后得到以下的解决办法:</p>
+<ol>
+<li>我常用的翻墙方法是改<a href="http://levi.cg.am/archives/3553" target="_blank" rel="external">hosts</a>文件(我是ubuntu其实windows也一样)，</li>
+</ol>
+<ol>
+<li>但是这样我们还是不能更新api，肿么办？改android-sdk-manager的下tool&gt;option:</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Proxy Settings</div><div class="line">    HTTP Proxy Serve =&gt; mirrors.opencas.cn</div><div class="line">    HTTP Proxy Port  =&gt; 80</div><div class="line"></div><div class="line">Force https ://...source tobe fetched using http:///... ###勾选这项</div><div class="line"></div><div class="line">Enable Preview Tools  ... ###勾选这项</div></pre></td></tr></table></figure>
+<p>其实是改了下代理而已，我们还是要学会使用镜像,这里面有很多的<a href="http://www.androiddevtools.cn/" target="_blank" rel="external">代理镜像</a></p>
+<p>现在解决了打包是不会报错了，但是安装apk 以后发现我连登录都不行了这下好玩了，后来到ionic 的论坛里面去瞎看无意间看到很多人在讨论 如何点击链接拨打电话：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"tab-item"</span> <span class="attr">href</span>=<span class="string">"tel:0039340123456"</span>&gt;</span>call me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"tab-item"</span>  <span class="attr">ng-href</span>=<span class="string">"tel:&#123;&#123;vm.article.tel&#125;&#125;"</span>&gt;</span>call me<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>刚开始还不知道是什么情况，后来无意间看到他们说必须加上白名单才能用，我想是不是这个原因，后来查了资料发现cordova5.0版本以后的为了安全都禁止了发送请求,很多的东西我们必须自己配置:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cordova plugins add cordova-plugin-whitelist <span class="comment">###安装白名单插件</span></div></pre></td></tr></table></figure></p>
+<p>然后在我们app的config.xml中配置:<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">content</span> <span class="attr">src</span>=<span class="string">"index.html"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">access</span> <span class="attr">origin</span>=<span class="string">"*"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">access</span> <span class="attr">origin</span>=<span class="string">"tel:*"</span> <span class="attr">launch-external</span>=<span class="string">"yes"</span>/&gt;</span> ###允许调用外部电话</div></pre></td></tr></table></figure></p>
+<p>具体的请看<a href="https://github.com/apache/cordova-plugin-whitelist" target="_blank" rel="external">白名单的API</a>,这下我们可以不用jsonp了，也不用担心跨域了</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2016/12/29/我的2016/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -985,6 +1139,312 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2015/04/22/ionic-旅途/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="钟 明">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="这样生活 很美...">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/04/22/ionic-旅途/" itemprop="url">
+                  ionic 旅途
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-04-22T21:17:40+08:00">
+                2015-04-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/04/22/ionic-旅途/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/04/22/ionic-旅途/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/04/22/ionic-旅途/" class="leancloud_visitors" data-flag-title="ionic 旅途">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付"><a href="#在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付" class="headerlink" title="在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付"></a>在ionic中巧用iframe解决跳转到第三方平台时不能回调的问题－比如支付</h2><hr>
+<p>　　在ionic开发中遇到不少的坑，绝大部分解决了但是在我们的app中如果跳转到第三方网站上时，那么问题来了．此时我们的app是不能监听到你在其它网站上的事件的，所以当你想要回退到我们自己app上时,请紧握你的蛋,小编在开发这个模块时就遇到了很大的麻烦想尽各种办法还是不能解决,下面我就跟大家讨论下我在ionic中遇到的问题:</p>
+<hr>
+<p> *在开发一款机票砍价的ionic app中用户可以选择去携程订票,这个时候问题来了因为我监听了android的back的事件,而且这个事件是cordovaJS调用了原生的事件来进行处理的.代码如下:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ionicPlatform.registerBackButtonAction(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">  e.preventDefault();</div><div class="line">  ......</div><div class="line">  ......</div><div class="line">  return <span class="literal">false</span>;</div><div class="line">&#125;, <span class="number">101</span>);</div></pre></td></tr></table></figure></p>
+<p>　　但是当我跳转到携程的时候,这个监听函数是不会起作用的,所以我就凌乱……..,当用户要返回到我的App时要不停的按手机的返回键,这个时候就相对于浏览器的后退一样了,这个时候就会出现一个不好的表现了,回退的功能会把你浏览过的route全部重新访问一边之后才会退出我们的应用,如果没有使用上面的registerBackButtonAction的话,这是在android上,至少是可以回退,但是在ios上呢?这个就会很逆天了,会被别人骂的要死……<br> *另一个问题是:用户支付的时候,我们为了方便使用了网页版的支付方式,同样的问题同样的味道,虽然可以自己写cordva的插件.但是毕竟这个还是比较费时间的,如果小伙伴需要这样的功能我推荐大家用这个: <a href="https://github.com/TongChia/cordova-plugin-pingpp" target="_blank" rel="external">pingpp</a></p>
+<p>最后的最后实在是没办法了……<br>想到了用iframe现在才想到,唉~</p>
+<p>不瞎扯分享下我的经验:</p>
+<p>首先使用$ionicModal创建一个弹出层可以覆盖整个页面,具体就看大家的业务需求了<br>在modal中加入如下的代码:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;ion-modal-view&gt;</div><div class="line">    &lt;ion-header-bar align-title="center" class="bar-positive"&gt;</div><div class="line">        &lt;div class="buttons"&gt;</div><div class="line">            &lt;button ng-click="vm.cancelPay()" class="button button-clear button-icon icon ion-ios-arrow-back"&gt;&lt;/button&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">        &lt;h1 class="title"&gt;支付宝&lt;/h1&gt;</div><div class="line">    &lt;/ion-header-bar&gt;</div><div class="line">    &lt;ion-content scroll="true" class="has-header no-padding"&gt;</div><div class="line">        &lt;iframe data-tap-disabled="true" ng-src="&#123;&#123;vm.paySrc&#125;&#125;"&gt;&lt;/iframe&gt;</div><div class="line">    &lt;/ion-content&gt;</div><div class="line">&lt;/ion-modal-view&gt;</div></pre></td></tr></table></figure>
+<p>注意下我们需要配置ion-content的<strong>scroll=”true” class=”has-header no-padding”</strong> 和iframe的<strong>data-tap-disabled=”true”</strong><br>这里就是可以解决用户不能操作iframe里面的东西</p>
+<p>　　其中如果想要动态的改变iframe的src一定要用<strong>ng-src=”“</strong>但是这里就需要注意了,如果你的<strong>vm.paySrc</strong>是普通的链接是不能访问的,因为Angularjs 中防止了用户注入URL,<strong>所以解决办法是使用 $sce.trustAsResourceUrl(URL)</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vm.paySrc =  $sce.trustAsResourceUrl(<span class="string">'http://www.baidu.com/'</span>); <span class="comment">//URL 为全链接（$sce.trustAsResourceUrl("http://" + url)）</span></div></pre></td></tr></table></figure>
+<p>最后就是添加css了:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.scroll-content</span> &gt; <span class="selector-class">.scroll</span> &#123;</div><div class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.scroll-content</span> &gt; <span class="selector-class">.scroll</span> &gt; <span class="selector-tag">iframe</span> &#123;</div><div class="line">    <span class="attribute">min-width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">min-height</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>好了基本上就是这样了其它的细节大家去优化吧!这里是参考的资料:</p>
+<p><a href="https://github.com/driftyco/ionic/issues/1151" target="_blank" rel="external">https://github.com/driftyco/ionic/issues/1151</a></p>
+<p><a href="http://forum.ionicframework.com/t/fill-content-container/605" target="_blank" rel="external">http://forum.ionicframework.com/t/fill-content-container/605</a></p>
+<p><a href="http://www.erpchn.com/diannao/43242.html" target="_blank" rel="external">http://www.erpchn.com/diannao/43242.html</a></p>
+<p><a href="http://www.thinksaas.cn/group/topic/350702/" target="_blank" rel="external">http://www.thinksaas.cn/group/topic/350702/</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://zmGitHub.github.io/2015/03/27/ubuntu-14-04-搭建ionic的开发环境/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="钟 明">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/images/avatar.png">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="这样生活 很美...">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="这样生活 很美..." src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2015/03/27/ubuntu-14-04-搭建ionic的开发环境/" itemprop="url">
+                  ubuntu 14.04 搭建ionic的开发环境
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-03-27T22:41:17+08:00">
+                2015-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2015/03/27/ubuntu-14-04-搭建ionic的开发环境/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2015/03/27/ubuntu-14-04-搭建ionic的开发环境/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2015/03/27/ubuntu-14-04-搭建ionic的开发环境/" class="leancloud_visitors" data-flag-title="ubuntu 14.04 搭建ionic的开发环境">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>　　这些天一直在研究ionic开发，发现很多大神都是在window下面开发的，但是我是在ubuntu14.04 下面进行开发，发现环境上的很多的问题和他们的不一样，所以自己总结了一下在ubuntu下面的差异，写的不好欢迎大家指导</p>
+<ul>
+<li>ubuntu14.04 jdk 安装（我的是jdk 8）<br>  下载linux系统下的jdk（这里就不说明了）</li>
+<li>android sdk 安装<br>1.因为android sdk 是32位的 但是我们的系统是64位所以要安装32位的运行库<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install lib32z1 lib32ncurses5 lib32bz2-1.0</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这里注意啦！因为ubuntu13.0以后的都是上面这句代码，可是我一开始就用了下面句：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install ia32-libs  <span class="comment">## 这是ubtun13的 更高的版本已经移除了</span></div></pre></td></tr></table></figure></p>
+<p>如果是这里没有安装好这个库，后面生成apk的时候就等着蛋疼吧！（因为没有任何错误信息）<br>2.因为我们的google被墙所以android sdk 的下载就成了问题：大家记得翻翻墙吧!</p>
+<p>未完。。。。。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1028,7 +1488,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1046,7 +1506,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
